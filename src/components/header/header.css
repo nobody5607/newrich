@@ -1,0 +1,17 @@
+.header{
+    position: fixed;
+    top:0;
+    width:100%;
+    background:#f50057;
+    left: 0;
+    z-index: 1000; 
+}
+.Header-paper-23{
+    color:#fff !important;
+}
+.center-header{
+    text-align: center;
+}
+.marginButton40px{
+    margin-bottom: 40px;
+}
