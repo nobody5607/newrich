@@ -15,11 +15,11 @@ exports.querySql = async (req, res) => {
 }
 
 exports.findAllSearch = async (req, res) => {
-    console.log('findAllSearch');
+
     const _table = req.query._table;
     const _term = req.query._term;
     const _columnName = req.query._columnName;
-    console.log(_columnName);
+
     if (typeof _table !== 'undefined') {  
         try {  
             let dataQuery = await db.findAllSearch(_table,_columnName,_term);
@@ -32,7 +32,7 @@ exports.findAllSearch = async (req, res) => {
     }   
 }
 exports.findAll = async (req, res) => {
-    console.log('findAll');
+
     let _table = req.query._table;
     let _condition = req.query._condition;
     if (typeof _table !== 'undefined') {  
@@ -48,7 +48,7 @@ exports.findAll = async (req, res) => {
 }
  
 exports.insert = async (req, res) => {
-    console.log('insert');
+
     const fields = req.fields;  
     if (typeof fields._table !== 'undefined') {  
         try {
@@ -67,7 +67,7 @@ exports.insert = async (req, res) => {
     }
 }
 exports.update = async (req, res) => {
-    console.log('update');
+
     const fields = req.fields;  
     if (typeof fields._table !== 'undefined') {  
         try {
@@ -85,7 +85,7 @@ exports.update = async (req, res) => {
     }
 }
 exports.delete = async (req, res) => {
-    console.log('delete');
+
     const fields = req.query; 
     if (typeof fields._table !== 'undefined') {
         try {

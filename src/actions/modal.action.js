@@ -13,10 +13,9 @@ import {
 
 
   export const getToggleModal = (modal) => {
-    console.log('getModalOpen');  
+     
     return dispatch => { 
         dispatch(setModalOpen(modal)); 
     };
   };
 
-  

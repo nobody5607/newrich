@@ -1,24 +1,18 @@
 import React, {Component} from 'react';
 import Header from '../header';
 import {withStyles} from '@material-ui/core/styles';
-
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Menus from "../menus/menus";
-import {Card} from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
+import OrderList from "../order-list";
+
+//redux
+import { connect } from "react-redux";
+import {profile} from "../../actions/profile.action";
 
 const styles = theme => ({
     root: {
         width: '100%',
-        paddingTop: '10px'
+        paddingTop: '10px',
+        marginTop:'80px'
     },
     card:{
       marginTop:'10px'
@@ -39,467 +33,38 @@ const styles = theme => ({
 });
 
 class Order extends Component {
-
+    async componentDidMount() {
+        let total = false;
+        await this.props.profile(total);
+        //let {profileResult} = this.props.profileReducer;
+    }
     orderDetail = (order_id) => {
-        this.props.history.push('/order-detail');
-    };
 
+        this.props.history.push('/order-detail?id='+order_id);
+    };
     render() {
         const {classes} = this.props;
+        const {profileFetching,profileResult} = this.props.profileReducer;
+
         return (
             <div>
                 <Header header='Order'/>
                 <div className={classes.root}>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
 
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
+                    {profileFetching && <h2 style={{textAlign:'center',color:'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
+                    {!profileFetching && profileResult !== undefined &&
+                    profileResult !== null &&
+                    profileResult.order !== null &&
+                    profileResult.order.length > 0 &&
+                    profileResult.order !== 'error' &&
+                    profileResult.order.map((item, index) => {
+                        return <OrderList item={item.order} key={index}  onClick={() => this.orderDetail(item.order.id)}  />
+                    })}
 
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
+                    {!profileFetching && profileResult !== undefined &&
+                    profileResult !== null &&
+                    profileResult.order === null && <h3 style={{textAlign:'center'}}>ยังไม่ Order </h3>}
 
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order1" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order1
-                                        </Typography>
-                                        {"รายการสินค้า"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="contained" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image} alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText primary="Order2" secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            Order2
-                                        </Typography>
-                                        {"demo"}
-
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            className={classes.btn_right}
-                                            color="textPrimary"
-                                        >
-
-                                            <Button onClick={this.orderDetail} variant="outlined" color="primary"
-                                                    align='right'>
-                                                Detail
-                                            </Button>
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
                 </div>
                 <Menus/>
             </div>
@@ -507,4 +72,10 @@ class Order extends Component {
     }
 }
 
-export default withStyles(styles)(Order);
+const mapStateToProps = ({ profileReducer }) => ({
+    profileReducer,
+});
+const mapDispatchToProps = {
+    profile
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Order));

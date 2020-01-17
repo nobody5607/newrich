@@ -5,9 +5,9 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT = 'LOGOUT';
 
 // Register Page
-export const HTTP_REGISTER_FETCHING = "HTTP_REGISTER_FETCHING";
-export const HTTP_REGISTER_SUCCESS = "HTTP_REGISTER_SUCCESS";
-export const HTTP_REGISTER_FAILED = "HTTP_REGISTER_FAILED"; 
+export const REGISTER_FETCHING = "REGISTER_FETCHING";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILED = "REGISTER_FAILED";
 
 export const SHOP_UPDATE_ORDER = "SHOP_UPDATE_ORDER";
 export const SHOP_UPDATE_PAYMENT = "SHOP_UPDATE_PAYMENT";
@@ -32,23 +32,74 @@ export const UPLOAD_PHOTO_FAIL_MESSAGE = 'An error has occurred. The photo was u
 // Speciment Page
 export const SPECIMENT_FETCHING = 'SPECIMENT_FETCHING';
 export const SPECIMENT_SUCCESS = 'SPECIMENT_SUCCESS';
-export const SPECIMENT_FAILED = 'SPECIMENT_FAILED';  
+export const SPECIMENT_FAILED = 'SPECIMENT_FAILED';
+
+
+// Member Page
+export const MEMBER_FETCHING = 'MEMBER_FETCHING';
+export const MEMBER_SUCCESS = 'MEMBER_SUCCESS';
+export const MEMBER_FAILED = 'MEMBER_FAILED';
+
+export const AMEMBER_FETCHING = 'AMEMBER_FETCHING';
+export const AMEMBER_SUCCESS = 'AMEMBER_SUCCESS';
+export const AMEMBER_FAILED = 'AMEMBER_FAILED';
+
+
+
+// Profile Page
+export const PROFILE_FETCHING = 'PROFILE_FETCHING';
+export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
+export const PROFILE_FAILED = 'PROFILE_FAILED';
+
+// Profile Page
+export const UPDATE_PROFILE_FETCHING = 'UPDATE_PROFILE_FETCHING';
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const UPDATE_PROFILE_FAILED = 'UPDATE_PROFILE_FAILED';
+
+
+// Order Page
+export const ORDER_FETCHING = 'ORDER_FETCHING';
+export const ORDER_SUCCESS = 'ORDER_SUCCESS';
+export const ORDER_FAILED = 'ORDER_FAILED';
+
+
+// INCOME Page
+export const INCOME_FETCHING = 'INCOME_FETCHING';
+export const INCOME_SUCCESS = 'INCOME_SUCCESS';
+export const INCOME_FAILED = 'INCOME_FAILED';
+
 
 //modal 
 export const MODAL_OPEN = 'MODAL_OPEN';
 export const MODAL_CLOSE = 'MODAL_CLOSE';
 
 
-export const apiUrl =  "http://66.42.49.97:8081/api/v2";
-export const imageUrl = "http://localhost:8081";
+// export const apiUrl =  "http://newrich.local/api";
+export const apiUrl =  "https://newrich.bloodcloud.online/api";
+export const itoplusUrl = "https://www.alfoodsmarket.com/";
+export const mainUrl = "https://newrich-8ee77.firebaseapp.com";
+export const facebookSharedUrl = "https://www.facebook.com/sharer/sharer.php?u=";
 
 
-export const server = {    
-    LOGIN_URL : `login`,
-    QUERY_URL:`query`,    
-    REGISTER_URL : `register`,  
+export const imageUrl = apiUrl;
+
+
+export const server = {
+    GetMemberUrl:'member/get-member',
+
+    LOGIN_URL : `auth/login`,
+    MEMBER_URL:`member`,
+    MEMBERBYTYPE_URL:`member/get-member-by-type`,
+    MEMBERBYID_URL:`member/get-member-by-id`,
+    REGISTER_URL : `auth/register`,
     PRODUCT_URL : `product`,    
     TRANSACTION_URL : `transaction`,    
-    REPORT_URL: `report`,    
+    PROFILE_URL: `auth/get-profile`,
+    MYPROFILE_URL: `auth/my-profile`,
+    UPDATEMYPROFILE_URL: `auth/update-my-profile`,
+    CHANGEPASSWORD_URL: `auth/change-password`,
+    ORDERDETAIL_URL: `member/get-order-detail`,
+
+    INCOME_URL: 'order',
     TOKEN_KEY : `token`,
 }

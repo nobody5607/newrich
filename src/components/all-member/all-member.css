@@ -1,0 +1,24 @@
+.MuiTab-textColorSecondary.Mui-selected {
+    color: #ffffff !important;
+    background: #FF5722;
+    /* font-weight: bold; */
+}
+.MuiTab-textColorSecondary {
+    color: #ffffff !important;
+}
+.PrivateTabIndicator-colorSecondary-263 {
+    background-color: #FF5722 !important;;
+}
+.PrivateTabIndicator-colorSecondary-263 {
+    background-color: #FF5722 !important;
+}
+.MuiFab-secondary {
+    color: #fff;
+    background-color: #FF5722 !important;
+}
+.PrivateTabIndicator-colorSecondary-156 {
+    background-color: #ff5722;
+}
+.MuiBox-root {
+    padding: 0 !important;
+}

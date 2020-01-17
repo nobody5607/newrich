@@ -18,11 +18,10 @@ import {
       case SPECIMENT_SUCCESS:
         return { ...state, result: payload, isFetching: false, isError: false,errMessage:null };
       case SPECIMENT_FAILED:
-        //console.log(payload); 
+
         return { ...state, result: null, isFetching: false, isError: true,errMessage:payload };
      
       default:
         return state;
     }
   };
-  

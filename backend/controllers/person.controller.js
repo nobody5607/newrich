@@ -14,7 +14,7 @@ const knbase64 = require('../classes/knbase64');
 //     }
 // }
 exports.findAll = async (req, res) => {
-    console.log('findAll');
+
     let _table = req.query._table;
     let _condition = req.query._condition;
     if (typeof _table !== 'undefined') {  
@@ -29,7 +29,7 @@ exports.findAll = async (req, res) => {
     }   
 }
 exports.insert = async (req, res) => {
-    console.log('insert');
+
     const fields = req.fields;  
     if (typeof fields._table !== 'undefined') {  
         try {
@@ -66,7 +66,7 @@ exports.update = async (req, res) => {
     }
 }
 exports.delete = async (req, res) => {
-    console.log('delete');
+
     const fields = req.fields;
     if (typeof fields._table !== 'undefined') {
         try {

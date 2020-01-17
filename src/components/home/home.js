@@ -1,27 +1,35 @@
 import React, { Component } from 'react'; 
 import Header from '../header';
 import Menus from "../menus/menus";
-import {Card, withStyles} from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import {withStyles} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Fab from '@material-ui/core/Fab';
+
+//redux
+import { connect } from "react-redux";
+import * as actions from "../../actions/member.action";
+import {profile} from "../../actions/profile.action";
+
+import {
+    itoplusUrl
+} from "../../constants";
+
+import './home.css';
+import MemberList from "../member-list";
+import MemberGrid from "../member-grid";
 
 const styles = theme => ({
     root: {
         width: '100%',
-        paddingTop: '10px'
+        paddingTop: '10px',
+        marginTop:'100px'
     },
     card: {
         marginTop: '10px'
     },
     marginTop:{
-      marginTop:'80px'
+      marginTop:'100px'
     },
     inline: {
         display: 'inline',
@@ -43,7 +51,9 @@ const styles = theme => ({
 
     },
     text_right:{
-        textAlign: 'right'
+        textAlign: 'right',
+        fontSize:'8px',
+        color:'#9E9E9E'
     },
     text_center:{
         textAlign:'center',
@@ -57,232 +67,132 @@ const styles = theme => ({
     fabMain:{
         width:'200px',
         height:'200px',
-        background:'#fff',
+        background:'#f7b733',
         cursor:'default'
     },
     hr:{
-        borderWidth: "2px"
+        borderWidth: "1px",
+        border:'1px solid #e5e5e7'
     },
-    font16:{
-        fontSize:'16pt',
+    font12:{
+        fontSize:'14pt',
         fontWeight:'bold',
-        color:"#565656"
+        color:"#b3b3b3"
     }
 });
 class Home extends Component {
+    componentDidMount() {
+        this.props.profile(true);
+        this.props.getMemberUrl();
+    }
+
+    memberDetail =(id)=> {
+
+        //alert(id)
+        this.props.history.push('/member-detail?id='+id);
+    };
+    inCome =(id)=> {
+        this.props.history.push('/income');
+    };
+    goBack =()=> {
+        this.props.history.push('/home');
+    };
     render() {
         const {classes} = this.props;
+        const { isFetching, result } = this.props.memberReducer;
+        const { profileResult } = this.props.profileReducer;
+
+
+
         return (
             <div >
                 <Header header='Home'/>
                 <div className={classes.marginTop}>
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={12}>
                             <Grid container>
-                                <Grid item md={2} xs={4}>
-                                    <Avatar className={classes.imageCenter}
+                                <Grid item md={3} xs={3} style={{marginLeft:'-3px'}}>
+                                    <Avatar className={classes.imageCenter} id="fixed-image"
                                             alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
+                                            src={profileResult && profileResult.profile && profileResult.profile.avatar_path !== undefined && profileResult.profile.avatar_path}/>
                                 </Grid>
-                                <Grid item md={10} xs={8}>
-                                    <div className={classes.font16}>Hello,Name</div>
-                                    <div>ID:{"01001"}</div>
+                                <Grid item md={9} xs={9} className={classes.font12} style={{color:'#fff'}}>
+                                    <div className="profile-header">
+                                        <img src={`${process.env.PUBLIC_URL}/assets/images/user1.png`} style={{width:'18px',height:'18px'}}/>{' '}
+                                        Hello,{profileResult && profileResult.profile.name}</div>
+                                    <div className="profile-header">
+                                        <img src={`${process.env.PUBLIC_URL}/assets/images/star.png`} style={{width:'18px',height:'18px'}}/>{' '}
+                                        ID: {profileResult && profileResult.profile.member_id}
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item xs={6} className={classes.text_right}>
-                            <div>Member since</div>
-                            <div>10 Jan 19</div>
-                        </Grid>
                     </Grid>
                 </div>
-                <hr className={classes.hr}/>
+                <hr className="hrstyle" style={{marginTop:'30px'}}/>
+                <Grid container className='color-gray' >
+                    <div style={{marginTop:'15px',fontWeight:'bold',marginLeft:'20px'}}>
+                        <div> รายรับรวม </div>
+                    </div>
 
-                <div>รายรับรวม</div>
-                <Grid container spacing={3}>
                     <Grid item xs={12} className={classes.text_center}>
-                        <Fab className={classes.fabMain} aria-label="add" size={"large"}>
+                        <Fab className={classes.fabMain} aria-label="add" size={"large"} style={{color:'#fff'}}>
                             <div>
-                                <div>ต.ค 2019</div>
-                                <div><h1>130,089 B.</h1></div>
-                                <div>ดูรายละเอียด</div>
+                                <div>{profileResult && profileResult.order && profileResult.order.currentMonth }</div>
+
+                                <div><h1 style={{color:'#fff'}}>{(profileResult && profileResult.order && profileResult.order.totalPrice) ? profileResult.order.totalPrice : '0'}฿</h1></div>
+                                <div onClick={this.inCome}>ดูรายละเอียด</div>
                             </div>
                         </Fab>
                     </Grid>
-                    <Grid item xs={12} className={classes.text_right}>
-                        <Fab className={classes.fab} color="secondary" aria-label="add" size={"large"}>
-                            สั่งสินค้า<br/>เพิ่มเติม
-                        </Fab>
+                    <Grid item xs={12} className={classes.text_right} style={{marginRight:'20px'}}>
+                        <a target="_blank" href={itoplusUrl}>
+                            <Fab className={classes.fab} color="secondary" aria-label="add" size={"large"}>
+                                สั่งสินค้า<br/>เพิ่มเติม
+                            </Fab>
+                        </a>
                     </Grid>
                 </Grid>
+                <hr className="hrstyle" style={{marginTop:'30px'}}/>
+                <div style={{marginTop:'15px',fontWeight:'bold',color:'#9E9E9E'}}>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Grid container>
 
-                <hr className={classes.hr}/>
-                <div>New Members</div>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
+                                <Grid item md={9} xs={10} className={classes.font12} >
+                                     <div className="txt-new-founder"> New Founers </div>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </div>
 
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
+                {isFetching && <h2 style={{textAlign:'center',color:'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
+                    {!isFetching && result !== undefined &&
+                    result !== null &&
+                    result.data.length > 0 &&
+                    result.status !== 'error' &&
+                    result.data.map((item, index) => {
+                        return <MemberGrid
+                                    key={index}
+                                    member={item}
+                                    onClick={() => this.memberDetail(item.user_id)}
+                                    type={"B2C"}/> })}
 
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
 
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
+                <br/><br/><br/>
 
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
-
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
-                <Card className={classes.card}>
-                    <CardContent>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                <Avatar className={classes.image}
-                                        alt="Travis Howard"
-                                        src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                            </ListItemAvatar>
-                            <ListItemText  secondary={
-                                <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={6}>
-                                            <div>NAME:{"Demo1"}</div>
-                                            <div>ID:{"01001"}</div>
-                                        </Grid>
-                                        <Grid item xs={6} className={classes.text_right}>
-                                            <div> Member Type</div>
-                                            <div>B2B</div>
-                                        </Grid>
-                                    </Grid>
-                                </Typography>
-
-                            }
-                            />
-                        </ListItem>
-                    </CardContent>
-                </Card>
                 <Menus/>
             </div>
         );
     }
 }
-export default withStyles(styles)(Home);
+const mapStateToProps = ({ memberReducer,profileReducer }) => ({
+    memberReducer,
+    profileReducer,
+});
+const mapDispatchToProps = {
+    ...actions,
+    profile
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));

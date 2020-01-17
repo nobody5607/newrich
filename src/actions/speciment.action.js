@@ -33,10 +33,10 @@ import {
         let dataInsert = await httpClient.post(server.QUERY_URL, formData);
         let {result} = dataInsert.data;
         if(result === "ok"){
-          //console.log('ok');
+
           await doGetSpeciment(dispatch);
         }else{ 
-          //console.log('nok 555 (: data = ',data);
+
           dispatch(setStateSpecimentToFailed(dataInsert.data.data));
         }
       }catch(error){
@@ -52,10 +52,10 @@ import {
         let dataUpdate = await httpClient.put(server.QUERY_URL, formData);
         let {result} = dataUpdate.data;
         if(result === "ok"){
-          //console.log('ok');
+
           await doGetSpeciment(dispatch);
         }else{ 
-          //console.log('nok 555 (: data = ',data);
+
           dispatch(setStateSpecimentToFailed(dataUpdate.data.data));
         }
       }catch(error){
@@ -68,7 +68,7 @@ import {
 
   export const deleteSpeciment = id =>{
     let _condition = btoa(JSON.stringify({id:id})); 
-     //console.log(_condition); 
+
      return async dispatch =>{
         dispatch(setStateSpecimentToFetching());
         await httpClient.delete(`${server.QUERY_URL}`,{params: {_table:'speciment',_condition:_condition}})
@@ -109,4 +109,3 @@ import {
       dispatch(setStateSpecimentToFailed());
     }
   };
-  

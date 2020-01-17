@@ -3,6 +3,9 @@ import './header.css';
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from "@material-ui/core";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+
+import { withRouter } from "react-router-dom";
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -17,19 +20,24 @@ const styles = theme => ({
 });
 
 class Header extends Component {
-
+    gotoHome=()=>{
+        this.props.history.push('/home');
+    }
     render() {
         const { classes,goback } = this.props;
         return (
             <div className={classes.root}>
                 <Grid container spacing={3} className="header">
-                    <Grid item sm={2} xs={2} lg={2}>
+                    <Grid item sm={2} xs={2} lg={2} style={{color:'#fff',marginTop:'15px'}}>
                         {goback === true && <div className={classes.paper}>
                             <KeyboardBackspaceIcon onClick={this.props.route}/>
                         </div>}
                     </Grid>
-                    <Grid item sm={8} xs={8} lg={8}>
-                        <div className={classes.paper}>{this.props.header}</div>
+                    <Grid item sm={8} xs={8} lg={8} style={{color:'#fff',marginTop:'15px'}}>
+                        <div className={classes.paper} style={{color:'#fff'}}>{this.props.header}</div>
+                    </Grid>
+                    <Grid item sm={2} xs={2} lg={2}>
+                        <img onClick={this.gotoHome} id="header-logo" src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
                     </Grid>
                 </Grid>
                 <div className='marginButton40px'></div>
@@ -37,4 +45,4 @@ class Header extends Component {
         );
     }
 }
-export default withStyles(styles)(Header);
+export default withStyles(styles)(withRouter(Header));

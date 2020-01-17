@@ -1,6 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=El+Messiri|M+PLUS+Rounded+1c|Michroma|Montserrat+Alternates|Yrsa&display=swap');
+
 .root{
     position: fixed;
     bottom: 0;
     width: 100%;
     left: 0;
+}
+.MuiTab-wrapper{
+    font-family: 'Yrsa','El Messiri', serif;
+}
+.MuiTab-root{
+    text-transform: none;
+}
+.PrivateTabIndicator-colorSecondary-257 {
+    background-color: #2597d3 !important;
+}
+.jss257 {
+    background-color: #2597d3 !important;
+}
+.jss198 {
+    background-color: #f7b733 !important;
+}
+.tab_primary{
+    background-color: #4abdac !important;
+}
+.tab_color_while{
+ color:#fff;
+}
+
+.MuiTab-textColorSecondary.Mui-selected {
+    color: #ffffff !important;
+    background: #f7b733;
+    /* font-weight: bold; */
+}
+.MuiTab-textColorSecondary {
+    color: #ffffff !important;
+}
+.PrivateTabIndicator-colorSecondary-263 {
+    background-color: #f7b733 !important;;
+}
+.PrivateTabIndicator-colorSecondary-263 {
+    background-color: #f7b733 !important;
+}
+.MuiFab-secondary {
+    color: #fff;
+    background-color: #f7b733 !important;
+}
+.PrivateTabIndicator-colorSecondary-198{
+    background-color: #f7b733 !important;
+}
+.MuiPaper-rounded {
+    border-radius: 20px !important;
 }

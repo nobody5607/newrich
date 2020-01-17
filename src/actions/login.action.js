@@ -32,12 +32,23 @@ import {
       try {
         dispatch(setLoginStateToFetch()); // fetching
         let result = await httpClient.post(server.LOGIN_URL, value);
-        if (result.data.result == 'ok') {
-          localStorage.setItem(server.TOKEN_KEY, result.data.token);
-          dispatch(setLoginStateToSuccess(result));
-          history.push("/stock")
-        } else {        
-          dispatch(setLoginStateToFailed(result));
+
+        if (result.data.status === 'success') {
+          //localStorage.setItem(server.TOKEN_KEY, result.data.user.auth_key);
+          //localStorage.setItem(server.TOKEN_KEY, )
+          let {data} = result.data;
+
+          localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
+          localStorage.setItem('link', data.profile.link);
+          localStorage.setItem('name', data.profile.name);
+          localStorage.setItem('image', data.profile.avatar_path);
+
+          localStorage.setItem('profile',JSON.stringify(data.profile));
+
+          dispatch(setLoginStateToSuccess(result.data));
+        } else {
+          //console.error(result.data.message);
+          dispatch(setLoginStateToFailed(result.data.message));
         }
       } catch (error) {        
           dispatch(setLoginStateToFailed({data: {message: error}}));
@@ -52,4 +63,4 @@ import {
         dispatch(setLoginStateToLogout())  
         history.push("/login");
       }
-    }
+  }

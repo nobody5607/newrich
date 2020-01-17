@@ -1,16 +1,10 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #dcdcdc;
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+*{
+  font-family: 'Prompt', sans-serif; 
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  background: #e9ebee;
+  overflow-x: hidden;
 }
 .content{
   margin-top: 90px;
@@ -21,6 +15,13 @@ code {
 .MuiFab-root:hover {
   background-color: #ffffff;
 }
-.Header-paper-17 {
+.Header-paper-17,.Header-paper-18,.Header-paper-19,.Header-paper-20 {
   color:#fff !important;
+}
+.MuiGrid-spacing-xs-3 {
+  margin: 0px;
+}
+.Header-paper-15{color:#fff !important;}
+.MuiTabs-indicator {
+  background: #f7b733 !important;
 }

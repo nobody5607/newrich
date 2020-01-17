@@ -1,20 +1,23 @@
 import React, {Component} from 'react';
 import Header from '../header';
 import Menus from "../menus/menus";
-import {Card, withStyles} from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-import Grid from '@material-ui/core/Grid';
+import {withStyles} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
+import MemberList from "../member-list";
+
+
+//redux
+import { connect } from "react-redux";
+import * as actions from "../../actions/member.action";
+import MemberGrid from "../member-grid";
+
 
 const styles = theme => ({
     root: {
         width: '100%',
-        paddingTop: '10px'
+        paddingTop: '10px',
+        marginTop:'20px',
+        color:'#9E9E9E'
     },
     card: {
         marginTop: '10px'
@@ -41,186 +44,57 @@ const styles = theme => ({
 });
 
 class MyMember extends Component {
+    componentDidMount() {
+        this.props.getMemberUrl();
+    }
+    allMember = () => {
+        this.props.history.push('/all-member');
+    };
+    memberDetail =(id)=> {
+
+        this.props.history.push('/member-detail?id='+id);
+    };
     render() {
         const {classes} = this.props;
+        const { isFetching, result } = this.props.memberReducer;
+
         return (
             <div>
-                <Header header='My Member'/>
+                <Header header='Founders'/>
                     <div className={classes.root}>
                     <div>
                         <div>
-                            <div>Total Member</div>
-                            <div><h3>50 Members</h3></div>
-                        </div>
-                        <hr/>
-                        <div>
-                            OCT 19 New Members
+                            <div style={{marginTop:'10px',color:'#4abdac'}}><h2>Total Founders</h2></div>
+
+                            <div style={{fontSize:'16pt'}}>
+                                {
+                                    !isFetching && result !== null &&
+                                    result.status !== 'error' &&
+                                    result.data.length > 0 && result.data[0].count
+                                } Founders</div>
                         </div>
                     </div>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar className={classes.image}
-                                            alt="Travis Howard"
-                                            src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                </ListItemAvatar>
-                                <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                }
-                                />
-                            </ListItem>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                            <CardContent>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar className={classes.image}
-                                                alt="Travis Howard"
-                                                src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                    </ListItemAvatar>
-                                    <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                    }
-                                    />
-                                </ListItem>
-                            </CardContent>
-                        </Card>
-                    <Card className={classes.card}>
-                            <CardContent>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar className={classes.image}
-                                                alt="Travis Howard"
-                                                src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                    </ListItemAvatar>
-                                    <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                    }
-                                    />
-                                </ListItem>
-                            </CardContent>
-                        </Card>
-                    <Card className={classes.card}>
-                            <CardContent>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar className={classes.image}
-                                                alt="Travis Howard"
-                                                src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                    </ListItemAvatar>
-                                    <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                    }
-                                    />
-                                </ListItem>
-                            </CardContent>
-                        </Card>
-                    <Card className={classes.card}>
-                            <CardContent>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar className={classes.image}
-                                                alt="Travis Howard"
-                                                src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                    </ListItemAvatar>
-                                    <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                    }
-                                    />
-                                </ListItem>
-                            </CardContent>
-                        </Card>
-                    <Card className={classes.card}>
-                            <CardContent>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar className={classes.image}
-                                                alt="Travis Howard"
-                                                src="https://img.icons8.com/ultraviolet/80/000000/gallery.png"/>
-                                    </ListItemAvatar>
-                                    <ListItemText  secondary={
-                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={6}>
-                                                    <div>NAME:{"Demo1"}</div>
-                                                    <div>ID:{"01001"}</div>
-                                                </Grid>
-                                                <Grid item xs={6} className={classes.text_right}>
-                                                    <div> Member Type</div>
-                                                    <div>B2B</div>
-                                                </Grid>
-                                            </Grid>
-                                        </Typography>
-
-                                    }
-                                    />
-                                </ListItem>
-                            </CardContent>
-                        </Card>
+                        {isFetching && <h2 style={{textAlign:'center',color:'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
+                        {!isFetching && result !== undefined &&
+                        result !== null &&
+                        result.data.length > 0 &&
+                        result.status !== 'error' &&
+                        result.data.map((item, index) => {
+                            return <MemberGrid
+                                key={index}
+                                member={item}
+                                onClick={() => this.memberDetail(item.user_id)}
+                                type={"B2C"}/>
+                        })}
                         <div className={classes.text_center}>
-                            <Button size={"large"} fullWidth variant="outlined" color="primary" disableElevation>
+                            <Button style={{marginBottom:'100px'}}
+                                id="btn-default"
+                                onClick={this.allMember}
+                                size={"large"}
+                                fullWidth
+                                variant="outlined"
+                                color="default"
+                                disableElevation>
                                 See all
                             </Button>
                         </div>
@@ -231,4 +105,10 @@ class MyMember extends Component {
     }
 }
 
-export default withStyles(styles)(MyMember);
+const mapStateToProps = ({ memberReducer }) => ({
+    memberReducer,
+});
+const mapDispatchToProps = {
+    ...actions,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MyMember));

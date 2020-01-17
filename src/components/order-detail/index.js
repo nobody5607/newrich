@@ -1,1 +1,1 @@
-export {default} from './my-member';
+export {default} from './order-detail';
