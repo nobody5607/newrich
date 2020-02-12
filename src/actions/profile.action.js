@@ -72,8 +72,7 @@ export const changePassword = (values) => {
     formData.append("new_password", values.new_password);
     return async dispatch => {
         try {
-            let result = await httpClient.post(server.CHANGEPASSWORD_URL, formData);
-
+            await httpClient.post(server.CHANGEPASSWORD_URL, formData);
         } catch (error) {
             dispatch(setUpdateProfileStateToFailed({data: {message: error}}));
         }

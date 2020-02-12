@@ -20,6 +20,7 @@ import Link from "./components/link";
 import ChangePassword from "./components/change-password/change-password";
 
 
+
 import {
     server
 } from "./constants";
@@ -60,6 +61,7 @@ class App extends React.Component{
                     <SecuredRoute path="/about" component={About}/>
                     <SecuredRoute path="/help" component={Help}/>
                     <SecuredRoute path="/change-password" component={ChangePassword}/>
+
 
                     <Route path="/register" component={Register}/>
                     <Route path="/login" component={Login}/>

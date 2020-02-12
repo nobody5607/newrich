@@ -1,23 +1,22 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import {Formik} from 'formik';
-import {login} from "../../actions/login.action";
+import {login,loginSocial} from "../../actions/login.action";
 import Swal from 'sweetalert2';
 import {connect} from "react-redux";
 
 import './login.css';
 import { server } from "../../constants";
 import * as Yup from 'yup';
+import FacebookLogin from "react-facebook-login";
+// import GoogleLogin from 'react-google-login';
+
 
 const styles = theme => ({
     paper: {
@@ -39,6 +38,11 @@ const styles = theme => ({
 });
 
 class Login extends React.Component {
+     state={
+        id:'',
+        name:'',
+        email:''
+    }
     componentDidMount(){
         if (localStorage.getItem(server.TOKEN_KEY) != null){
             this.props.history.push("/home")
@@ -50,9 +54,66 @@ class Login extends React.Component {
     register=()=>{
         this.props.history.push('/register');
     }
-    forgot=()=>{
-        this.props.history.push('/forgot');
+    // facebookLogin=()=>{
+    //     const query = new URLSearchParams(this.props.location.search);
+    //     let link = query.get('link');
+    //     this.props.history.push('/facebook?link='+link+'&status=1');
+    // }
+    responseFacebook = async (response) => {
+        const query = new URLSearchParams(this.props.location.search);
+        let link = query.get('link');
+        if(link === undefined || link === null){
+            link = await localStorage.getItem('query_link');
+            if(link === undefined){
+                link = 'newrich999';
+            }
+        }
+        if(response.error !== undefined){
+            //message
+            Swal.fire({
+                title: '',
+                text: response.error.message,
+                icon: 'warning',
+                timer: 2000,
+                buttons: false,
+            });
+        }
+        if(response.id !== undefined){
+            console.log("response");
+            console.log(response.id);
+            let formData = new FormData();
+            formData.append("id", response.id);
+            formData.append("name", response.name);
+            formData.append("email", response.email);
+            this.props.loginSocial(formData, this.props.history)
+            setTimeout(()=>{
+                // console.error(this.props.loginReducer.isError);
+                if(this.props.loginReducer.isError === true){
+                    let {errMessage} = this.props.loginReducer;
+                    Swal.fire({
+                        title: '',
+                        text: errMessage,
+                        icon: 'warning',
+                        timer: 2000,
+                        buttons: false,
+                    });
+                }else{
+                    this.goHome();
+                }
+            },1500);
+        }
+
+
     }
+    // forgot=()=>{
+    //     this.props.history.push('/forgot');
+    // }
+
+
+
+    // responseGoogle = async (response) => {
+    //      console.log(response);
+    // }
 
     showForm = ({values, handleChange, handleSubmit, setFieldValue ,errors, touched})=>{
         const {classes} = this.props;
@@ -91,16 +152,35 @@ class Login extends React.Component {
                     <div style={{color:'red'}}>{errors.password}</div>
                 ) : null}
 
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    id="btn-primary"
-                >
-                    Sign In
-                </Button>
+                <div>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        id="btn-primary"
+                    >
+                        Sign In
+                    </Button>
+                </div>
+                <div>
+                    <FacebookLogin
+                        appId="191638915353261" //APP ID NOT CREATED YET
+                        fields="name,email,picture"
+                        autoLoad={false}
+                        callback={this.responseFacebook}
+                    />
+                </div>
+                <div id="login-with-google">
+                    {/*<GoogleLogin*/}
+                    {/*    clientId="344060547201-s8nvulgcr5a5ei2p10ho79fcn8fqorhd.apps.googleusercontent.com" //CLIENTID NOT CREATED YET*/}
+                    {/*    buttonText="LOGIN WITH GOOGLE"*/}
+                    {/*    onSuccess={this.responseGoogle}*/}
+                    {/*    onFailure={this.responseGoogle}*/}
+                    {/*/>*/}
+                </div>
+
 
             </form>
 
@@ -117,12 +197,12 @@ class Login extends React.Component {
 
 
         return (
-            <div className="page-login" style={{backgroundImage:`url(${process.env.PUBLIC_URL}/assets/images/bglogin.png)`}}>
+            <div className="page-login" >
             <Container component="main" maxWidth="xs" >
                 <CssBaseline/>
                 <div className={classes.paper} >
                         <div className="text-center logo">
-                            <img src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
+                            <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
                         </div>
                     <Typography component="h1" variant="h5">
                        <span className='text-red'>NEW</span>Rich
@@ -160,7 +240,7 @@ class Login extends React.Component {
                         {/*    <label onClick={this.forgot} > Forgot password?</label>*/}
                         {/*</label>*/}
                         <br/>
-                        <label className="text-write">
+                        <label className="text-gray">
                             {"Don't have an account?"}
                             <label onClick={this.register} className="text-orange"> Sign Up</label>
                         </label>
@@ -178,6 +258,7 @@ const mapStateToProps = ({ loginReducer }) => ({
     loginReducer,
 });
 const mapDispatchToProps = {
-    login
+    login,
+    loginSocial
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

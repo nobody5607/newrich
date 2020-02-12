@@ -29,15 +29,15 @@ class Header extends Component {
             <div className={classes.root}>
                 <Grid container spacing={3} className="header">
                     <Grid item sm={2} xs={2} lg={2} style={{color:'#fff',marginTop:'15px'}}>
-                        {goback === true && <div className={classes.paper}>
-                            <KeyboardBackspaceIcon onClick={this.props.route}/>
+                        {goback === true && <div className='header-txt'>
+                            <KeyboardBackspaceIcon  onClick={this.props.route}/>
                         </div>}
                     </Grid>
-                    <Grid item sm={8} xs={8} lg={8} style={{color:'#fff',marginTop:'15px'}}>
-                        <div className={classes.paper} style={{color:'#fff'}}>{this.props.header}</div>
+                    <Grid item sm={8} xs={8} lg={8} style={{color:'#fff',marginTop:'15px',lineHeight:'30px'}}>
+                        <div className='header-txt'>{this.props.header}</div>
                     </Grid>
                     <Grid item sm={2} xs={2} lg={2}>
-                        <img onClick={this.gotoHome} id="header-logo" src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
+                        <img alt="image_logo" onClick={this.gotoHome} id="header-logo" src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
                     </Grid>
                 </Grid>
                 <div className='marginButton40px'></div>

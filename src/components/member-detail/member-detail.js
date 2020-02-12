@@ -1,22 +1,12 @@
 import React, {Component} from 'react';
 import Header from "../header";
 import CardContent from "@material-ui/core/CardContent";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-
 import {Card, withStyles} from "@material-ui/core";
-
-
 import Grid from '@material-ui/core/Grid';
-
 //redux
 import { connect } from "react-redux";
 import * as actions from "../../actions/member.action";
-import Paper from "@material-ui/core/Paper";
-
 
 const styles = theme => ({
     root: {

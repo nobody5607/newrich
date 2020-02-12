@@ -63,7 +63,7 @@ class Order extends Component {
 
                     {!profileFetching && profileResult !== undefined &&
                     profileResult !== null &&
-                    profileResult.order === null && <h3 style={{textAlign:'center'}}>ยังไม่ Order </h3>}
+                    profileResult.order === null && <h3 style={{textAlign:'center',color:'gray'}}>ยังไม่ Order </h3>}
 
                 </div>
                 <Menus/>

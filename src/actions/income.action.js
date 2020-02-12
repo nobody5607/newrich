@@ -1,4 +1,3 @@
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import {
     INCOME_FETCHING,
     INCOME_SUCCESS,

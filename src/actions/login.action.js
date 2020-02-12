@@ -27,7 +27,36 @@ import {
   });
   
   // Called by Login Component
-  export const login = (value,history) => {
+export const loginSocial = (value,history)=>{
+  return async dispatch => {
+    try {
+      dispatch(setLoginStateToFetch()); // fetching
+      let result = await httpClient.post(server.LOGINSOCIAL_URL, value);
+
+      if (result.data.status === 'success') {
+        //localStorage.setItem(server.TOKEN_KEY, result.data.user.auth_key);
+        //localStorage.setItem(server.TOKEN_KEY, )
+        let {data} = result.data;
+
+        localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
+        localStorage.setItem('link', data.profile.link);
+        localStorage.setItem('name', data.profile.name);
+        localStorage.setItem('image', data.profile.avatar_path);
+
+        localStorage.setItem('profile',JSON.stringify(data.profile));
+
+        dispatch(setLoginStateToSuccess(result.data));
+      } else {
+        //console.error(result.data.message);
+        dispatch(setLoginStateToFailed(result.data.message));
+      }
+    } catch (error) {
+      dispatch(setLoginStateToFailed({data: {message: error}}));
+    }
+  };
+}
+
+export const login = (value,history) => {
     return async dispatch => {
       try {
         dispatch(setLoginStateToFetch()); // fetching

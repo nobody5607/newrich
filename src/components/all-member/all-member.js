@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../header';
 import {withStyles} from "@material-ui/core";
-import MemberList from "../member-list";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './all-member.css';

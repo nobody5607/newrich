@@ -2,12 +2,7 @@ import React, {Component} from "react";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {withRouter} from "react-router-dom";
-
 import Paper from '@material-ui/core/Paper';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import SettingsApplicationsOutlinedIcon from '@material-ui/icons/SettingsApplicationsOutlined';
 import './menu.css';
 
 class Menus extends Component {
@@ -40,12 +35,12 @@ class Menus extends Component {
                     textColor="secondary"
                     variant="fullWidth"
                 >
-                    <Tab className="tab_color_while" label="" value='/home' icon={<img style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/home.png`}/>}/>
+                    <Tab className="tab_color_while" label="" value='/home' icon={<img alt="image_icon" style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/home.png`}/>}/>
                     <Tab className="tab_color_while" label="" value='/my-member'
-                         icon={<img style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/user2.png`}/>}/>
-                    <Tab className="tab_color_while" label="" value='/order' icon={<img style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/cart.png`}/>}/>
+                         icon={<img alt="image_icon" style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/user2.png`}/>}/>
+                    <Tab className="tab_color_while" label="" value='/order' icon={<img alt="image_icon" style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/cart.png`}/>}/>
                     <Tab className="tab_color_while" label="" value='/setting'
-                         icon={<img style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/setting.png`}/>}/>
+                         icon={<img alt="image_icon" style={{width:'25px'}} src={`${process.env.PUBLIC_URL}/assets/images/setting.png`}/>}/>
 
                 </Tabs>
             </Paper>

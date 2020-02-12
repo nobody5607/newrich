@@ -3,11 +3,8 @@ import Header from '../header';
 import Menus from "../menus/menus";
 import {withStyles} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
-import MemberList from "../member-list";
-
-
 //redux
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import * as actions from "../../actions/member.action";
 import MemberGrid from "../member-grid";
 
@@ -16,8 +13,8 @@ const styles = theme => ({
     root: {
         width: '100%',
         paddingTop: '10px',
-        marginTop:'20px',
-        color:'#9E9E9E'
+        marginTop: '20px',
+        color: '#9E9E9E'
     },
     card: {
         marginTop: '10px'
@@ -34,11 +31,11 @@ const styles = theme => ({
         height: '60px',
         marginRight: '15px'
     },
-    text_right:{
+    text_right: {
         textAlign: 'right'
     },
-    text_center:{
-        textAlign:'center',
+    text_center: {
+        textAlign: 'center',
         marginTop: '10px'
     }
 });
@@ -47,47 +44,54 @@ class MyMember extends Component {
     componentDidMount() {
         this.props.getMemberUrl();
     }
+
     allMember = () => {
         this.props.history.push('/all-member');
     };
-    memberDetail =(id)=> {
+    memberDetail = (id) => {
 
-        this.props.history.push('/member-detail?id='+id);
+        this.props.history.push('/member-detail?id=' + id);
     };
+
     render() {
         const {classes} = this.props;
-        const { isFetching, result } = this.props.memberReducer;
+        const {isFetching, result} = this.props.memberReducer;
 
         return (
             <div>
                 <Header header='Founders'/>
-                    <div className={classes.root}>
+                <div className={classes.root}>
                     <div>
                         <div>
-                            <div style={{marginTop:'10px',color:'#4abdac'}}><h2>Total Founders</h2></div>
+                            <div style={{marginTop: '10px', color: '#4abdac'}}><h2>Total Founders</h2></div>
 
-                            <div style={{fontSize:'16pt'}}>
+                            <div style={{fontSize: '16pt'}}>
                                 {
                                     !isFetching && result !== null &&
                                     result.status !== 'error' &&
                                     result.data.length > 0 && result.data[0].count
-                                } Founders</div>
+                                } Founders
+                            </div>
                         </div>
                     </div>
-                        {isFetching && <h2 style={{textAlign:'center',color:'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
-                        {!isFetching && result !== undefined &&
-                        result !== null &&
-                        result.data.length > 0 &&
-                        result.status !== 'error' &&
-                        result.data.map((item, index) => {
-                            return <MemberGrid
-                                key={index}
-                                member={item}
-                                onClick={() => this.memberDetail(item.user_id)}
-                                type={"B2C"}/>
-                        })}
-                        <div className={classes.text_center}>
-                            <Button style={{marginBottom:'100px'}}
+                    {isFetching &&
+                    <h2 style={{textAlign: 'center', color: 'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
+                    {!isFetching && result !== undefined &&
+                    result !== null &&
+                    result.data.length > 0 &&
+                    result.status !== 'error' &&
+                    result.data.map((item, index) => {
+                        return <MemberGrid
+                            key={index}
+                            member={item}
+                            onClick={() => this.memberDetail(item.user_id)}
+                            type={"B2C"}/>
+                    })}
+                    <div className={classes.text_center}>
+
+                        {!isFetching && result != null &&
+
+                        <Button style={{marginBottom: '100px'}}
                                 id="btn-default"
                                 onClick={this.allMember}
                                 size={"large"}
@@ -95,17 +99,17 @@ class MyMember extends Component {
                                 variant="outlined"
                                 color="default"
                                 disableElevation>
-                                See all
-                            </Button>
-                        </div>
+                            See all
+                        </Button>}
                     </div>
+                </div>
                 <Menus/>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({ memberReducer }) => ({
+const mapStateToProps = ({memberReducer}) => ({
     memberReducer,
 });
 const mapDispatchToProps = {

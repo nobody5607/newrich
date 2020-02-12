@@ -13,6 +13,8 @@
     "react": "^16.11.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.11.0",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.7",
     "react-material-timeline": "^3.0.1",
     "react-moment": "^0.9.6",
     "react-redux": "^7.1.1",

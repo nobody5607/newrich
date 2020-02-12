@@ -3,12 +3,9 @@ import Header from "../header";
 import Avatar from "@material-ui/core/Avatar";
 import HomeIcon from '@material-ui/icons/Home';
 import { Timeline } from 'react-material-timeline';
-import Icon  from '@material-ui/core/Icon';
 import {withStyles} from "@material-ui/core";
 import {getInCome} from "../../actions/income.action";
 import {connect} from "react-redux";
-import incomeReducer from "../../reducers/income.reducers";
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 const styles = theme => ({
     root: {
         width: '100%',

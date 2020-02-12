@@ -17,7 +17,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import {
     itoplusUrl,
     mainUrl,
-    facebookSharedUrl
 } from "../../constants";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -155,7 +154,7 @@ class Setting extends Component {
 
                         {' '}
                         <Button variant="contained" color="primary" id="btn-success" onClick={this.goToCreateShopping}>
-                            <img style={{width:'20px'}} src={`${process.env.PUBLIC_URL}/assets/images/cart.png`}/>{' '}สร้างร้านค้า
+                            <img alt="login_image" style={{width:'20px'}} src={`${process.env.PUBLIC_URL}/assets/images/cart.png`}/>{' '}สร้างร้านค้า
                         </Button>
                     </div>
 

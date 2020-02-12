@@ -1,11 +1,9 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
@@ -200,6 +198,7 @@ class Register extends React.Component {
         if(link === undefined || link === null){
             link = 'newrich999';
         }
+        localStorage.setItem('query_link', link);
 
         const SignupSchema = Yup.object().shape({
             member_id: Yup.string().required('รหัสสมาชิกต้องไม่เป็นค่าว่าง'),
@@ -214,7 +213,7 @@ class Register extends React.Component {
                 <CssBaseline/>
                 <div className={classes.paper}>
                     <div className="text-center logo">
-                        <img src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
+                        <img src={`${process.env.PUBLIC_URL}/assets/images/logo.png`} alt="user_image"/>
                     </div>
                     <Typography component="h1" variant="h5">
                         Sign up

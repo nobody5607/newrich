@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-
+import {
+    mainUrl,
+} from "../../constants";
 class Link extends Component {
     state={
         name:'',
@@ -18,7 +20,7 @@ class Link extends Component {
             name:name,
             link:link,
             image:image,
-            url:'https://newrich-8ee77.firebaseapp.com/register?link='+link
+            url:`${mainUrl}/register?link=${link}`
         });
     }
     render() {

@@ -11,7 +11,6 @@ import {Card, withStyles} from "@material-ui/core";
 //redux
 import { connect } from "react-redux";
 import * as actions from "../../actions/order.action";
-import OrderList from "../order-list/order-list";
 
 const styles = theme => ({
     root: {

@@ -54,9 +54,9 @@ class EditProfile2 extends Component {
     };
     showPreviewImage = values => {
         if (values.file_obj) {
-            return <img src={values.file_obj} style={{ height: 100 }} />;
+            return <img  src={values.file_obj} style={{ height: 100,display: 'block',margin:'0 auto' }} alt="image_profile"/>;
         }else{
-            return <img src={this.state.image} style={{ height: 100 }} />;
+            return <img src={this.state.image} style={{ height: 100,display: 'block',margin:'0 auto' }} alt="image_profile"/>;
         }
     };
     showForm = ({values, handleChange, handleSubmit, setFieldValue,errors, touched}) => {

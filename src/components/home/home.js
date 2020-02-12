@@ -16,7 +16,6 @@ import {
 } from "../../constants";
 
 import './home.css';
-import MemberList from "../member-list";
 import MemberGrid from "../member-grid";
 
 const styles = theme => ({
@@ -29,7 +28,7 @@ const styles = theme => ({
         marginTop: '10px'
     },
     marginTop:{
-      marginTop:'100px'
+      marginTop:'80px'
     },
     inline: {
         display: 'inline',
@@ -67,7 +66,7 @@ const styles = theme => ({
     fabMain:{
         width:'200px',
         height:'200px',
-        background:'#f7b733',
+        background:'#ff4f8b',
         cursor:'default'
     },
     hr:{
@@ -116,12 +115,12 @@ class Home extends Component {
                                             alt="Travis Howard"
                                             src={profileResult && profileResult.profile && profileResult.profile.avatar_path !== undefined && profileResult.profile.avatar_path}/>
                                 </Grid>
-                                <Grid item md={9} xs={9} className={classes.font12} style={{color:'#fff'}}>
+                                <Grid item md={9} xs={9} className={classes.font12} style={{color:'rgb(0, 121, 145)'}}>
                                     <div className="profile-header">
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/user1.png`} style={{width:'18px',height:'18px'}}/>{' '}
+                                        <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/user1.png`} style={{width:'18px',height:'18px'}}/>{' '}
                                         Hello,{profileResult && profileResult.profile.name}</div>
                                     <div className="profile-header">
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/star.png`} style={{width:'18px',height:'18px'}}/>{' '}
+                                        <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/star.png`} style={{width:'18px',height:'18px'}}/>{' '}
                                         ID: {profileResult && profileResult.profile.member_id}
                                     </div>
                                 </Grid>
@@ -129,7 +128,7 @@ class Home extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                <hr className="hrstyle" style={{marginTop:'30px'}}/>
+                <hr className="hrstyle" style={{marginTop:'25px'}}/>
                 <Grid container className='color-gray' >
                     <div style={{marginTop:'15px',fontWeight:'bold',marginLeft:'20px'}}>
                         <div> รายรับรวม </div>
@@ -146,7 +145,7 @@ class Home extends Component {
                         </Fab>
                     </Grid>
                     <Grid item xs={12} className={classes.text_right} style={{marginRight:'20px'}}>
-                        <a target="_blank" href={itoplusUrl}>
+                        <a rel="noopener noreferrer" target="_blank" href={itoplusUrl}>
                             <Fab className={classes.fab} color="secondary" aria-label="add" size={"large"}>
                                 สั่งสินค้า<br/>เพิ่มเติม
                             </Fab>
@@ -155,12 +154,12 @@ class Home extends Component {
                 </Grid>
                 <hr className="hrstyle" style={{marginTop:'30px'}}/>
                 <div style={{marginTop:'15px',fontWeight:'bold',color:'#9E9E9E'}}>
-                    <Grid container>
+                        <Grid container>
                         <Grid item xs={12}>
                             <Grid container>
 
                                 <Grid item md={9} xs={10} className={classes.font12} >
-                                     <div className="txt-new-founder"> New Founers </div>
+                                     <div className="txt-new-founder"> New Founder </div>
                                 </Grid>
                             </Grid>
                         </Grid>
