@@ -66,7 +66,7 @@ const styles = theme => ({
     fabMain:{
         width:'200px',
         height:'200px',
-        background:'#ff4f8b',
+        background:'#fff',
         cursor:'default'
     },
     hr:{
@@ -135,11 +135,11 @@ class Home extends Component {
                     </div>
 
                     <Grid item xs={12} className={classes.text_center}>
-                        <Fab className={classes.fabMain} aria-label="add" size={"large"} style={{color:'#fff'}}>
+                        <Fab className={classes.fabMain} aria-label="add" size={"large"} style={{color:'#ff4f8b'}}>
                             <div>
                                 <div>{profileResult && profileResult.order && profileResult.order.currentMonth }</div>
 
-                                <div><h1 style={{color:'#fff'}}>{(profileResult && profileResult.order && profileResult.order.totalPrice) ? profileResult.order.totalPrice : '0'}฿</h1></div>
+                                <div><h1 style={{color:'#ff4f8b'}}>{(profileResult && profileResult.order && profileResult.order.totalPrice) ? profileResult.order.totalPrice : '0'}฿</h1></div>
                                 <div onClick={this.inCome}>ดูรายละเอียด</div>
                             </div>
                         </Fab>

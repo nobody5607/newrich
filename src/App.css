@@ -9,7 +9,7 @@
     margin-left:-15px;
 }
 .MuiFab-root{
-    color: #9E9E9E;
+    color: #ff4f8b;
 }
 a{
     text-decoration: none;
@@ -188,13 +188,13 @@ body{
 
 .MuiFab-secondary {
     color: #fff;
-    background-color: #4abdac !important;
+    background-color: #f7b733 !important;
 }
 .MuiPaper-elevation1 {
     box-shadow:none !important;
 }
 .MuiFab-root:hover {
-            background-color: #f72c71 !important;
+    background-color: #ffffff !important;
 }
 
 button.kep-login-facebook.metro {

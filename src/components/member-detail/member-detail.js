@@ -26,8 +26,11 @@ const styles = theme => ({
 
     },
     content:{
-        marginTop: '100px'
+        marginTop: '80px'
     },
+    paper:{
+        textAlign:'center'
+    }
 });
 class MemberDetail extends Component {
      componentDidMount() {
@@ -59,43 +62,74 @@ class MemberDetail extends Component {
                                             src={result.data.profile!== undefined?result.data.profile.avatar_path:""}/>
                                 </Grid>
 
-                                    <Grid item xs={12} style={{textAlign:'center',paddingRight:'10px'}}>
-                                        <h2 style={{fontSize:'16pt',color:'#4abdac',fontWeight:'bold'}}>{result.data.profile !== undefined ? result.data.profile.name : ''}</h2>
+                                    <Grid item xs={12} style={{textAlign:'center',paddingRight:'10px',marginBottom:"10px",marginTop:"10px"}}>
+                                        <h2 style={{fontSize:'20pt',color:'#4abdac',fontWeight:'bold'}}>{result.data.profile !== undefined ? result.data.profile.name : ''}</h2>
                                     </Grid>
 
 
-                                    <Grid item xs={6} style={{textAlign:'right',paddingRight:'10px'}}>
-                                        <div className={classes.paper}><b>ID</b>: {result.data.profile !== undefined ? result.data.profile.member_id : ''}</div>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <div className={classes.paper}><b>Member Type</b>:{this.props.type ? this.props.type :'B2B'}</div>
-                                    </Grid>
-                                    <Grid item xs={6} style={{textAlign:'right',paddingRight:'10px'}}>
-                                        <div className={classes.paper}>
-                                            <b>ยอดสั่งซื้อ</b>:{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalOrder === undefined)?0:result.data.order.totalOrder : '0'} ฿
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <div className={classes.paper}>
-                                            <b>ส่วนลด</b>:{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalPrice === undefined)?0:result.data.order.totalPrice : '0'} ฿
-                                        </div>
-                                    </Grid>
-                                <Grid item xs={6} style={{textAlign:'right',paddingRight:'10px'}}>
+                                <Grid item xs={4} style={{textAlign:'right',paddingRight:'12px',marginBottom:'20px'}}>
                                     <div className={classes.paper}>
-                                        <b>คะแนน</b>:{(result.data.order && result.data.order.totalScore !== null) ? (result.data.order.totalScore === undefined)?0:result.data.order.totalScore : '0'} PV
+                                        <div>
+                                            <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/id.png`}/>
+                                        </div>
+                                        <div>{result.data.profile !== undefined ? result.data.profile.member_id : ''}</div>
+                                        <div style={{fontSize:"10px"}}>รหัส</div>
                                     </div>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={4} style={{textAlign:'right',paddingRight:'12px'}}>
                                     <div className={classes.paper}>
-                                        <b>รายรับรวม</b>:{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalPrice === undefined)?0:result.data.order.totalPrice : '0'} ฿
+                                        <div>
+                                            <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/member.png`}/>
+                                        </div>
+                                        <div>{this.props.type ? this.props.type :'B2B'}</div>
+                                        <div style={{fontSize:"10px"}}>ประเภทผู้ใช้</div>
                                     </div>
                                 </Grid>
+                                <Grid item xs={4}>
+                                    <div className={classes.paper}>
+                                        <div>
+                                            <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/discount.png`}/>
+                                        </div>
+                                        <div>{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalPrice === undefined)?0:result.data.order.totalPrice : '0'} ฿</div>
+                                        <div style={{fontSize:"10px"}}>ส่วนลด</div>
+                                    </div>
+
+                                </Grid>
+                                <br/><br/><br/>
+
+                                <Grid item xs={4} style={{textAlign:'right',paddingRight:'12px'}}>
+                                    <div className={classes.paper}>
+                                        <div>
+                                            <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/order.png`}/>
+                                        </div>
+                                        <div>{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalOrder === undefined)?0:result.data.order.totalOrder : '0'} ฿</div>
+                                        <div style={{fontSize:"10px"}}>ยอดสั่งซื้อ</div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={4} style={{textAlign:'right',paddingRight:'12px'}}>
+                                    <div className={classes.paper}>
+                                        <div>
+                                            <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/score.png`}/>
+                                        </div>
+                                        <div>{(result.data.order && result.data.order.totalScore !== null) ? (result.data.order.totalScore === undefined)?0:result.data.order.totalScore : '0'} PV</div>
+                                        <div style={{fontSize:"10px"}}>คะแนน</div>
+                                    </div>
+                                </Grid>
+                                    <Grid item xs={4}>
+                                        <div className={classes.paper}>
+                                            <div>
+                                                <img style={{width:'50px'}} alt="image_logo" src={`${process.env.PUBLIC_URL}/assets/images/coin.png`}/>
+                                            </div>
+                                            <div>{(result.data.order !== undefined && result.data.order !== null) ? (result.data.order.totalPrice === undefined)?0:result.data.order.totalPrice : '0'} ฿</div>
+                                            <div style={{fontSize:"10px"}}>รายรับรวม</div>
+                                        </div>
+
+                                    </Grid>
 
 
-                                <Grid item xs={12} style={{textAlign:'center',paddingRight:'10px'}}>
-                                    <h3 className={classes.paper}><b>Profile</b></h3>
+                                <Grid item xs={12} style={{textAlign:'left',paddingRight:'10px',borderTop:'1px solid #8a8a8a2b',marginTop:'20px',paddingTop:'20px'}}>
                                     <div>
-                                        {result.data.profile !== undefined ? result.data.profile.profile : ''}
+                                        {result.data.profile !== undefined && result.data.profile.profile != 'null' ? result.data.profile.profile : ''}
                                     </div>
                                 </Grid>
 

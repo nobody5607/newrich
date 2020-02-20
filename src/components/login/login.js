@@ -197,7 +197,7 @@ class Login extends React.Component {
 
 
         return (
-            <div className="page-login" >
+            <div className="page-login" style={{marginTop:"60px"}}>
             <Container component="main" maxWidth="xs" >
                 <CssBaseline/>
                 <div className={classes.paper} >
@@ -229,7 +229,7 @@ class Login extends React.Component {
                                 }else{
                                     this.goHome();
                                 }
-                            },1500);
+                            },1000);
                             setSubmitting(false)
                         }}>
                         { props=> this.showForm(props)}

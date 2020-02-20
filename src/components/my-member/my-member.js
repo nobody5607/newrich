@@ -63,13 +63,13 @@ class MyMember extends Component {
                 <div className={classes.root}>
                     <div>
                         <div>
-                            <div style={{marginTop: '10px', color: '#4abdac'}}><h2>Total Founders</h2></div>
+                            <div style={{marginTop: '10px', color: '#4abdac',textAlign:'center'}}><h2>Total Founders</h2></div>
 
-                            <div style={{fontSize: '16pt'}}>
+                            <div style={{fontSize: '16pt',textAlign:'left'}}>
                                 {
                                     !isFetching && result !== null &&
                                     result.status !== 'error' &&
-                                    result.data.length > 0 && result.data[0].count
+                                    result.data.length > 0 && result.data.length
                                 } Founders
                             </div>
                         </div>

@@ -118,17 +118,18 @@ class Setting extends Component {
             <div className={classes.root}>
                <Header header='Setting'/>
 
-               <Grid container spacing={3}>
-                    <Grid item xs={12}><br/>
-                        <Avatar className="image_size"
-                                alt="profile image"
-                                src={this.state.image}/>
-                    </Grid>
-                </Grid>
+
 
                 <Card className={classes.card}>
                     <CardContent>
-                        <div className="profile"><br/>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}><br/>
+                                <Avatar className="image_size"
+                                        alt="profile image"
+                                        src={this.state.image}/>
+                            </Grid>
+                        </Grid><br/><br/>
+                        <div className="profile">
                             <div className="profile_name">{this.state.name}
                                 <IconButton   aria-label="delete" color="primary" onClick={this.editProfile}>
                                     <CreateIcon style={{color:'#4abdac'}}/>
@@ -139,7 +140,7 @@ class Setting extends Component {
                     </CardContent>
                 </Card>
 
-                <div className='mb-10'>
+                <div style={{marginTop:'-30px'}}>
                     <div style={{textAlign:"center"}}>
                         Link: {this.state.link}
                     </div>
