@@ -77,7 +77,7 @@ export const MODAL_CLOSE = 'MODAL_CLOSE';
 // export const apiUrl =  "http://newrich.local/api";
 export const apiUrl =  "https://newrich.bloodcloud.online/api";
 export const itoplusUrl = "https://www.alfoodsmarket.com/";
-export const mainUrl = "https://newrich-8ee77.firebaseapp.com/";
+export const mainUrl = "https://newrich.kookainoy.com/";
 export const facebookSharedUrl = "https://www.facebook.com/sharer/sharer.php?u=";
 
 

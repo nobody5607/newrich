@@ -166,7 +166,7 @@ class Login extends React.Component {
                 </div>
                 <div>
                     <FacebookLogin
-                        appId="191638915353261" //APP ID NOT CREATED YET
+                        appId="824540648022199" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         autoLoad={false}
                         callback={this.responseFacebook}
