@@ -33,7 +33,7 @@ export const getMemberUrl=()=>{
     return async dispatch => {
         try {
             dispatch(setMemberFetching());
-            let result = await httpClient.get(`${server.GetMemberUrl}`);
+            let result = await httpClient.get(`${server.GetMemberUrl}?site=${process.env.REACT_APP_SITE}`);
             let {data} = result;
             if(data.status === 'success'){
                 dispatch(setMemberSuccess(result.data));
@@ -57,7 +57,7 @@ export const getMemberByType=(type)=>{
     return async dispatch => {
         try {
             dispatch(setMemberFetching());
-            let result = await httpClient.get(`${server.MEMBERBYTYPE_URL}?type=${type}`);
+            let result = await httpClient.get(`${server.MEMBERBYTYPE_URL}?site=${process.env.REACT_APP_SITE}&type=${type}`);
             let {data} = result;
             if(data.status === 'success'){
                 dispatch(setMemberSuccess(result.data));
@@ -74,9 +74,9 @@ const doGetMember = async (dispatch,id) => {
     try {
         let result = null;
         if(id !== undefined){
-            result = await httpClient.get(`${server.MEMBERBYID_URL}?id=${id}`);
+            result = await httpClient.get(`${server.MEMBERBYID_URL}?id=${id}&site=${process.env.REACT_APP_SITE}`);
         }else{
-            result = await httpClient.get(`${server.MEMBER_URL}/index?limit=9`);
+            result = await httpClient.get(`${server.MEMBER_URL}/index?limit=9&site=${process.env.REACT_APP_SITE}`);
         }
         dispatch(setMemberSuccess(result.data));
     } catch (err) {

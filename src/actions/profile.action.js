@@ -50,7 +50,7 @@ export const setUpdateProfileStateToFailed = payload => ({
     return async dispatch => {
       try {
         dispatch(setProfileStateToFetch()); // fetching
-        let url = `${server.PROFILE_URL}?total=${total}`;
+        let url = `${server.PROFILE_URL}?site=${process.env.REACT_APP_SITE}&total=${total}`;
 
         let result = await httpClient.get(url);
 

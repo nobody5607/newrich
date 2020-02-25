@@ -30,7 +30,7 @@ import React from "react";
       try {
         dispatch(setOrderStateToFetch()); // fetching
         let url = `${server.INCOME_URL}`;
-        let result = await httpClient.get(url);
+        let result = await httpClient.get(url+`?site=${process.env.REACT_APP_SITE}`);
 
         if (result.data.status === 'success') {
             let {data} = result.data;

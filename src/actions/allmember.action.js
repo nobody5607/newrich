@@ -26,7 +26,7 @@ export const getMemberByType=(type)=>{
     return async dispatch => {
         try {
             dispatch(setMemberFetching());
-            let result = await httpClient.get(`${server.MEMBERBYTYPE_URL}?type=${type}`);
+            let result = await httpClient.get(`${server.MEMBERBYTYPE_URL}?site=${process.env.REACT_APP_SITE}&type=${type}`);
             let {data} = result;
             if(data.status === 'success'){
                 dispatch(setMemberSuccess(result.data));

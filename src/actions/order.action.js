@@ -26,7 +26,7 @@ import {
     return async dispatch => {
       try {
         dispatch(setOrderStateToFetch()); // fetching
-        let url = `${server.ORDERDETAIL_URL}?order_id=${id}`;
+        let url = `${server.ORDERDETAIL_URL}?site=${process.env.REACT_APP_SITE}&order_id=${id}`;
 
         let result = await httpClient.get(url);
 
