@@ -97,7 +97,7 @@ export const server = {
     TRANSACTION_URL : `transaction`,    
     PROFILE_URL: `auth/get-profile`,
     MYPROFILE_URL: `auth/my-profile?site=${process.env.REACT_APP_SITE}`,
-    UPDATEMYPROFILE_URL: `auth/update-my-profile?site=${process.env.REACT_APP_SITE}`,
+    UPDATEMYPROFILE_URL: `auth/update-my-profile`,
     CHANGEPASSWORD_URL: `auth/change-password?site=${process.env.REACT_APP_SITE}`,
     ORDERDETAIL_URL: `member/get-order-detail`,
 
