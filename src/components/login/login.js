@@ -66,7 +66,7 @@ class Login extends React.Component {
         if(link === undefined || link === null){
             link = await localStorage.getItem('query_link');
             if(link === undefined){
-                link = 'newrich999';
+                link = process.env.REACT_APP_DEFAULTLINK;
             }
         }
         if(response.error !== undefined){
