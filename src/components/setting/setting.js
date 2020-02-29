@@ -15,7 +15,8 @@ import {logout} from "../../actions/login.action";
 import IconButton from '@material-ui/core/IconButton';
 import CreateIcon from '@material-ui/icons/Create';
 import {
-    itoplusUrl,
+    // itoplusUrl,
+    alfoodUrl,
     mainUrl,
 } from "../../constants";
 
@@ -100,7 +101,7 @@ class Setting extends Component {
         });
     }
     goToCreateShopping=()=>{
-        window.open(itoplusUrl, '_blank');
+        window.open(alfoodUrl, '_blank');
     }
     sharedComponentToFacebook=()=>{
         Swal.fire({

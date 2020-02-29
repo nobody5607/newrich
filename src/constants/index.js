@@ -77,6 +77,7 @@ export const MODAL_CLOSE = 'MODAL_CLOSE';
 // export const apiUrl =  "http://newrich.local/api";
 export const apiUrl =  process.env.REACT_APP_APIURL;//"https://newrich.bloodcloud.online/api";
 export const itoplusUrl = process.env.REACT_APP_ITOPLUSURL; //"https://www.alfoodsmarket.com/";
+export const alfoodUrl = process.env.REACT_APP_ALFOOD;
 export const mainUrl = process.env.REACT_APP_MAINURL;//"https://newrich.kookainoy.com/";
 export const facebookSharedUrl = process.env.REACT_APP_SHAREDURL;//"https://www.facebook.com/sharer/sharer.php?u=";
 
