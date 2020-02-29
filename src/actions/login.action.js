@@ -75,6 +75,7 @@ export const login = (value,history) => {
           localStorage.setItem('profile',JSON.stringify(data.profile));
 
           dispatch(setLoginStateToSuccess(result.data));
+          history.push('/home');
         } else {
           //console.error(result.data.message);
           dispatch(setLoginStateToFailed(result.data.message));
