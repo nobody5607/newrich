@@ -51,6 +51,7 @@ export const getMemberUrl=()=>{
 
 
 export const getMemberByType=(type)=>{
+
     if(type === undefined){
         type = 'B2B';
     }

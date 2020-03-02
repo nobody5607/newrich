@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 import {withStyles} from '@material-ui/core/styles';
 import {register} from "../../actions/register.action";
 import {Formik} from 'formik';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import {connect} from "react-redux";
 import * as Yup from 'yup';
 import {server} from "../../constants";
@@ -221,7 +221,15 @@ class Register extends React.Component {
                     <Container>
                         <Formik
                             validationSchema={SignupSchema}
-                            initialValues={{member_type:'B2B',tel:'',email:"",password:"",firstname:'',lastname:'',member_id:'member002'}}
+                            initialValues={{
+                                member_type:'B2B',
+                                tel:'',
+                                email:"",
+                                password:"",
+                                firstname:'',
+                                lastname:'',
+                                member_id:'member002'
+                            }}
                             onSubmit={(values,{setSubmitting})=>{
                                 let formData = new FormData()
                                 formData.append("email", values.email);
@@ -232,30 +240,34 @@ class Register extends React.Component {
                                 formData.append("member_type", values.member_type);
                                 formData.append("tel", values.tel);
                                 formData.append("link", link);
+                                formData.append('site', process.env.REACT_APP_SITE);
 
                                 this.props.register(formData, this.props.history);
-                                setTimeout(()=>{
-                                    if(this.props.registerReducer.isError === true){
-                                        let {errMessage} = this.props.registerReducer;
-                                        Swal.fire({
-                                            title: '',
-                                            text: errMessage,
-                                            icon: 'warning',
-                                            timer: 2000,
-                                            buttons: false,
-                                        });
-                                    }else{
-                                        let {result} = this.props.registerReducer;
-                                        Swal.fire({
-                                            title: '',
-                                            text: result,
-                                            icon: 'success',
-                                            timer: 2000,
-                                            buttons: false,
-                                        });
-                                        this.login();
-                                    }
-                                },1500);
+                                // setTimeout(()=>{
+                                //     console.log(this.props.registerReducer);
+                                //     if(this.props.registerReducer.isError === true){
+                                //         let {errMessage} = this.props.registerReducer;
+                                //         Swal.fire({
+                                //             title: '',
+                                //             text: errMessage,
+                                //             icon: 'warning',
+                                //             timer: 2000,
+                                //             buttons: false,
+                                //         });
+                                //     }else{
+                                //         let {result} = this.props.registerReducer;
+                                //         Swal.fire({
+                                //             title: '',
+                                //             text: result,
+                                //             icon: 'success',
+                                //             timer: 2000,
+                                //             buttons: false,
+                                //         });
+                                //         setTimeout(()=>{
+                                //             this.login();
+                                //         });
+                                //     }
+                                // },1500);
                                 setSubmitting(false)
                             }}>
                             { props=> this.showForm(props)}

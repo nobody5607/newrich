@@ -6,7 +6,7 @@ import {
     server 
   } from "../constants";
   import { httpClient } from "./../utils/HttpClient";
-  
+import Swal from 'sweetalert2';
   // Forward to reducer
   export const setLoginStateToFetch = () => ({
     type: LOGIN_FETCHING
@@ -67,6 +67,14 @@ export const login = (value,history) => {
           //localStorage.setItem(server.TOKEN_KEY, )
           let {data} = result.data;
 
+          Swal.fire({
+            title: '',
+            text: data.message,
+            icon: 'success',
+            timer: 2000,
+            buttons: false,
+          });
+
           localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
           localStorage.setItem('link', data.profile.link);
           localStorage.setItem('name', data.profile.name);
@@ -77,7 +85,15 @@ export const login = (value,history) => {
           dispatch(setLoginStateToSuccess(result.data));
           history.push('/home');
         } else {
+          let {data} = result;
           //console.error(result.data.message);
+          Swal.fire({
+            title: '',
+            text: data.message,
+            icon: 'warning',
+            timer: 2000,
+            buttons: false,
+          });
           dispatch(setLoginStateToFailed(result.data.message));
         }
       } catch (error) {        

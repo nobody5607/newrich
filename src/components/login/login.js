@@ -101,7 +101,7 @@ class Login extends React.Component {
                 }else{
                     this.goHome();
                 }
-            },1500);
+            },1000);
         }
 
 
@@ -216,21 +216,21 @@ class Login extends React.Component {
                             formData.append("username", values.username);
                             formData.append("password", values.password);
                             this.props.login(formData, this.props.history)
-                            setTimeout(()=>{
-                                // console.error(this.props.loginReducer.isError);
-                                if(this.props.loginReducer.isError === true){
-                                    let {errMessage} = this.props.loginReducer;
-                                    Swal.fire({
-                                        title: '',
-                                        text: errMessage,
-                                        icon: 'warning',
-                                        timer: 2000,
-                                        buttons: false,
-                                    });
-                                }else{
-                                    this.goHome();
-                                }
-                            },1000);
+                            // setTimeout(()=>{
+                            //     // console.error(this.props.loginReducer.isError);
+                            //     if(this.props.loginReducer.isError === true){
+                            //         let {errMessage} = this.props.loginReducer;
+                            //         Swal.fire({
+                            //             title: '',
+                            //             text: errMessage,
+                            //             icon: 'warning',
+                            //             timer: 2000,
+                            //             buttons: false,
+                            //         });
+                            //     }else{
+                            //         this.goHome();
+                            //     }
+                            // },1000);
                             setSubmitting(false)
                         }}>
                         { props=> this.showForm(props)}

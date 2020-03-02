@@ -4,6 +4,7 @@ import {
   REGISTER_FAILED,
     server 
   } from "../constants";
+import Swal from 'sweetalert2';
   import { httpClient } from "./../utils/HttpClient";
   
   // Forward to reducer
@@ -30,9 +31,24 @@ import {
         let {data} = result;
 
         if (data.status === 'success') {
+          Swal.fire({
+            title: '',
+            text: data.message,
+            icon: 'success',
+            timer: 2000,
+            buttons: false,
+          });
+          history.push('/login');
           dispatch(setRegisterSuccess(data.message));
         } else {
           console.warn(data.message);
+          Swal.fire({
+            title: '',
+            text: data.message,
+            icon: 'warning',
+            timer: 2000,
+            buttons: false,
+          });
           dispatch(setRegisterFailed(data.message));
         }
       } catch (error) {        
