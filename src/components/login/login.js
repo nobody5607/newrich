@@ -73,6 +73,8 @@ class Login extends React.Component {
                 localStorage.setItem('image', data.profile.avatar_path);
 
                 localStorage.setItem('profile',JSON.stringify(data.profile));
+
+                window.location.reload();
             }
         }
         
