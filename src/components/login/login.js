@@ -55,7 +55,7 @@ class Login extends React.Component {
         const query = new URLSearchParams(this.props.location.search);
         let token = query.get('token');
         if(token === null || token === '' || token === undefined){
-            window.location.href = 'http://backend.newrich.local/user/login';
+            window.location.href = 'http://backend.newriched.com/';
         }else{
             const apiUrl = `${apiUrl}/auth/login-by-token?token=${token}`
             axios.get(apiUrl).then((res) => {
