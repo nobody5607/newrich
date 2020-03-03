@@ -16,7 +16,9 @@ import { server,apiUrl } from "../../constants";
 import * as Yup from 'yup';
 import FacebookLogin from "react-facebook-login";
 
-import axios from 'axios'
+// import axios from 'axios'
+import { httpClient } from "./../../utils/HttpClient";
+
 
 // import GoogleLogin from 'react-google-login';
 
@@ -47,7 +49,7 @@ class Login extends React.Component {
         email:''
     }
     async componentDidMount(){
-         c//onsole.log(process.env.REACT_APP_NAME)
+         //onsole.log(process.env.REACT_APP_NAME)
         if (localStorage.getItem(server.TOKEN_KEY) != null){
             this.props.history.push("/home")
         }
@@ -60,18 +62,18 @@ class Login extends React.Component {
             const apiUrl = `https://backend.newriched.com/api/auth/login-by-token?token=${token}`
             let result = await httpClient.get(apiUrl);
 
-      if (result.data.status === 'success') {
-        //localStorage.setItem(server.TOKEN_KEY, result.data.user.auth_key);
-        //localStorage.setItem(server.TOKEN_KEY, )
-        let {data} = result.data;
+            if (result.data.status === 'success') {
+                //localStorage.setItem(server.TOKEN_KEY, result.data.user.auth_key);
+                //localStorage.setItem(server.TOKEN_KEY, )
+                let {data} = result.data;
 
-        localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
-        localStorage.setItem('link', data.profile.link);
-        localStorage.setItem('name', data.profile.name);
-        localStorage.setItem('image', data.profile.avatar_path);
+                localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
+                localStorage.setItem('link', data.profile.link);
+                localStorage.setItem('name', data.profile.name);
+                localStorage.setItem('image', data.profile.avatar_path);
 
-        localStorage.setItem('profile',JSON.stringify(data.profile));
-      }
+                localStorage.setItem('profile',JSON.stringify(data.profile));
+            }
         }
         
          
