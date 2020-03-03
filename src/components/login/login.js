@@ -47,7 +47,7 @@ class Login extends React.Component {
         email:''
     }
     componentDidMount(){
-         console.log(process.env.REACT_APP_NAME)
+         c//onsole.log(process.env.REACT_APP_NAME)
         if (localStorage.getItem(server.TOKEN_KEY) != null){
             this.props.history.push("/home")
         }
@@ -55,14 +55,23 @@ class Login extends React.Component {
         const query = new URLSearchParams(this.props.location.search);
         let token = query.get('token');
         if(token === null || token === '' || token === undefined){
-            window.location.href = 'http://backend.newriched.com/';
+            window.location.href = 'https://backend.newriched.com/';
         }else{
             const apiUrl = `https://backend.newriched.com/api/auth/login-by-token?token=${token}`
-            axios.get(apiUrl).then((res) => {
-                 console.log(res);   
-            }).catch(ex=>{
+            let result = await httpClient.get(apiUrl);
 
-            })
+      if (result.data.status === 'success') {
+        //localStorage.setItem(server.TOKEN_KEY, result.data.user.auth_key);
+        //localStorage.setItem(server.TOKEN_KEY, )
+        let {data} = result.data;
+
+        localStorage.setItem(server.TOKEN_KEY, data.user.auth_key);
+        localStorage.setItem('link', data.profile.link);
+        localStorage.setItem('name', data.profile.name);
+        localStorage.setItem('image', data.profile.avatar_path);
+
+        localStorage.setItem('profile',JSON.stringify(data.profile));
+      }
         }
         
          
