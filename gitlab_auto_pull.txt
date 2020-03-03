@@ -1,3 +1,0 @@
-git lab pull แบบไม่ต้องใส่รหัสผ่าน
-getlab>settings>Repository
-git remote set-url origin https://gitlab+deploy-token-112149:XecxLKQSGZrL9y8n7JMc@gitlab.com/nuttaphon/blood.git

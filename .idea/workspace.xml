@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="709e6f0c-13b7-4452-bda8-692d55c2c32f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/login.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/login.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/member.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/member.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/profile.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/profile.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/register.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/register.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/register/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/register/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gitlab_auto_pull.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,7 @@
       <workItem from="1582278311505" duration="492000" />
       <workItem from="1582429443418" duration="725000" />
       <workItem from="1582640878728" duration="4358000" />
-      <workItem from="1583157516022" duration="3736000" />
+      <workItem from="1583157516022" duration="4542000" />
     </task>
     <servers />
   </component>

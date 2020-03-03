@@ -12,9 +12,12 @@ import Swal from 'sweetalert2';
 import {connect} from "react-redux";
 
 import './login.css';
-import { server } from "../../constants";
+import { server,apiUrl } from "../../constants";
 import * as Yup from 'yup';
 import FacebookLogin from "react-facebook-login";
+
+import axios from 'axios'
+
 // import GoogleLogin from 'react-google-login';
 
 
@@ -48,6 +51,21 @@ class Login extends React.Component {
         if (localStorage.getItem(server.TOKEN_KEY) != null){
             this.props.history.push("/home")
         }
+
+        const query = new URLSearchParams(this.props.location.search);
+        let token = query.get('token');
+        if(token === null || token === '' || token === undefined){
+            window.location.href = 'http://backend.newrich.local/user/login';
+        }else{
+            const apiUrl = `${apiUrl}/auth/login-by-token?token=${token}`
+            axios.get(apiUrl).then((res) => {
+                 console.log(res);   
+            }).catch(ex=>{
+
+            })
+        }
+        
+         
     }
     goHome =()=>{
         this.props.history.push('/home');
@@ -199,57 +217,7 @@ class Login extends React.Component {
 
         return (
             <div className="page-login" style={{marginTop:"60px"}}>
-            <Container component="main" maxWidth="xs" >
-                <CssBaseline/>
-                <div className={classes.paper} >
-                        <div className="text-center logo">
-                            <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}/>
-                        </div>
-                    <Typography component="h1" variant="h5">
-                       <span className='text-red'>NEW</span>Rich
-                    </Typography>
-                    <Formik
-                        validationSchema={SignupSchema}
-                        initialValues={{username:"",password:""}}
-                        onSubmit={(values,{setSubmitting})=>{
-                            let formData = new FormData()
-                            formData.append("username", values.username);
-                            formData.append("password", values.password);
-                            this.props.login(formData, this.props.history)
-                            // setTimeout(()=>{
-                            //     // console.error(this.props.loginReducer.isError);
-                            //     if(this.props.loginReducer.isError === true){
-                            //         let {errMessage} = this.props.loginReducer;
-                            //         Swal.fire({
-                            //             title: '',
-                            //             text: errMessage,
-                            //             icon: 'warning',
-                            //             timer: 2000,
-                            //             buttons: false,
-                            //         });
-                            //     }else{
-                            //         this.goHome();
-                            //     }
-                            // },1000);
-                            setSubmitting(false)
-                        }}>
-                        { props=> this.showForm(props)}
-                    </Formik>
-                    <br/>
-                    <div className="footer-link">
-                        {/*<label className="text-write" style={{textAlign:'center'}}>*/}
-                        {/*    <label onClick={this.forgot} > Forgot password?</label>*/}
-                        {/*</label>*/}
-                        <br/>
-                        <label className="text-gray">
-                            {"Don't have an account?"}
-                            <label onClick={this.register} className="text-orange"> Sign Up</label>
-                        </label>
-
-
-                    </div>
-                </div>
-            </Container>
+                Loading...
             </div>
         );
     }
