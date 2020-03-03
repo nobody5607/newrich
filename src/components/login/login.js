@@ -57,7 +57,7 @@ class Login extends React.Component {
         if(token === null || token === '' || token === undefined){
             window.location.href = 'http://backend.newriched.com/';
         }else{
-            const apiUrl = `${apiUrl}/auth/login-by-token?token=${token}`
+            const apiUrl = `http://backend.newriched.com/auth/login-by-token?token=${token}`
             axios.get(apiUrl).then((res) => {
                  console.log(res);   
             }).catch(ex=>{
