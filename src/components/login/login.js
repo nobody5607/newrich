@@ -46,7 +46,7 @@ class Login extends React.Component {
         name:'',
         email:''
     }
-    componentDidMount(){
+    async componentDidMount(){
          c//onsole.log(process.env.REACT_APP_NAME)
         if (localStorage.getItem(server.TOKEN_KEY) != null){
             this.props.history.push("/home")
