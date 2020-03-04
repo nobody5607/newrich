@@ -51,13 +51,17 @@ class Login extends React.Component {
     async componentDidMount(){
          //onsole.log(process.env.REACT_APP_NAME)
         if (localStorage.getItem(server.TOKEN_KEY) != null){
+            console.log('isLogin');
             this.props.history.push("/home")
         }
 
         const query = new URLSearchParams(this.props.location.search);
         let token = query.get('token');
+        
+
         if(token === null || token === '' || token === undefined){
-            window.location.href = 'https://backend.newriched.com/';
+            
+            return window.location.href = 'https://backend.newriched.com/';
         }else{
             const apiUrl = `https://backend.newriched.com/api/auth/login-by-token?token=${token}`
             let result = await httpClient.get(apiUrl);
@@ -74,7 +78,9 @@ class Login extends React.Component {
 
                 localStorage.setItem('profile',JSON.stringify(data.profile));
 
-                window.location.reload();
+                //setTimeout(function(){
+                    window.location.reload();
+                // })
             }
         }
         
