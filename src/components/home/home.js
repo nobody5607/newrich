@@ -17,6 +17,7 @@ import {
 
 import './home.css';
 import MemberGrid from "../member-grid";
+import Bussinese from "./bussinese";
 
 const styles = theme => ({
     root: {
@@ -153,6 +154,10 @@ class Home extends Component {
                     </Grid>
                 </Grid>
                 <hr className="hrstyle" style={{marginTop:'30px'}}/>
+
+                <Bussinese/>
+
+
                 <div style={{marginTop:'15px',fontWeight:'bold',color:'#9E9E9E'}}>
                         <Grid container>
                         <Grid item xs={12}>

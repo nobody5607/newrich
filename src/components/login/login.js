@@ -60,10 +60,12 @@ class Login extends React.Component {
         
 
         if(token === null || token === '' || token === undefined){
-            
-            return window.location.href = 'https://backend.newriched.com/';
+            let backendUrl = process.env.REACT_APP_BACKEND;
+            let mainUrl = process.env.REACT_APP_MAINURL;
+            return window.location.href =  `${backendUrl}/user/login?redirectUrl=${mainUrl}`;
         }else{
-            const apiUrl = `https://backend.newriched.com/api/auth/login-by-token?token=${token}`
+            let url = process.env.REACT_APP_APIURL;
+            const apiUrl = `${url}/auth/login-by-token?token=${token}`;
             let result = await httpClient.get(apiUrl);
 
             if (result.data.status === 'success') {
@@ -235,7 +237,7 @@ class Login extends React.Component {
 
 
         return (
-            <div className="page-login" style={{marginTop:"60px"}}>
+            <div className="page-login" style={{marginTop:"60px",textAlign:"center"}}>
                 Loading...
             </div>
         );
