@@ -227,3 +227,9 @@ button.kep-login-facebook.metro {
     padding:7px !important
 }
 
+.MuiInputBase-input{
+    padding-left:15px !important;
+}
+.MuiInputLabel-animated {
+    padding-left: 15px !important;
+}

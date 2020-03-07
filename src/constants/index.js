@@ -74,6 +74,12 @@ export const MODAL_OPEN = 'MODAL_OPEN';
 export const MODAL_CLOSE = 'MODAL_CLOSE';
 
 
+
+// Profile Page
+export const GROUP_FETCHING = 'GROUP_FETCHING';
+export const GROUP_SUCCESS = 'GROUP_SUCCESS';
+export const GROUP_FAILED = 'GROUP_FAILED';
+
 // export const apiUrl =  "http://newrich.local/api";
 export const apiUrl =  process.env.REACT_APP_APIURL;//"https://newrich.bloodcloud.online/api";
 export const itoplusUrl = process.env.REACT_APP_ITOPLUSURL; //"https://www.alfoodsmarket.com/";

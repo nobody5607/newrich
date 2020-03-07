@@ -3,6 +3,10 @@ import {
     MEMBER_FETCHING,
     MEMBER_SUCCESS,
     MEMBER_FAILED,
+
+    GROUP_FETCHING,
+    GROUP_SUCCESS,
+    GROUP_FAILED,
     server
 } from "../constants";
 
@@ -20,6 +24,18 @@ export const setMemberFailed = payload => ({
 });
 
 
+
+export const setGroupFetching = payload => ({
+    type: GROUP_FETCHING
+});
+export const setGroupSuccess = payload => ({
+    type: GROUP_SUCCESS,
+    payload
+});
+export const setGroupFailed = payload => ({
+    type: GROUP_FAILED,
+    payload
+});
 //get
 export const geMembers = (id) => {
     return dispatch => {
@@ -27,8 +43,6 @@ export const geMembers = (id) => {
         doGetMember(dispatch,id);
     };
 };
-
-
 export const getMemberUrl=()=>{
     return async dispatch => {
         try {
@@ -46,10 +60,6 @@ export const getMemberUrl=()=>{
         }
     };
 }
-
-
-
-
 export const getMemberByType=(type)=>{
 
     if(type === undefined){
@@ -84,3 +94,39 @@ const doGetMember = async (dispatch,id) => {
         dispatch(setMemberFailed(JSON.stringify(err)));
     }
 };
+
+
+export const fetchGroup=()=>{
+    return async dispatch => {
+        dispatch(setGroupFetching());
+        try{
+            let result = await httpClient.get(`${server.MEMBER_URL}/group?site=${process.env.REACT_APP_SITE}`);
+            if(result.data.status === 'success'){
+                let {data} = result.data;
+                dispatch(setGroupSuccess(data));
+            }else{
+                let {data} = result.data;
+                dispatch(setGroupFailed(data.message));
+            }
+        }catch(ex){
+            dispatch(setGroupFailed(ex.message));
+        }
+    };
+}
+export const fetchGroupDetail=(groupID)=>{
+    return async dispatch => {
+        dispatch(setGroupFetching());
+        try{
+            let result = await httpClient.get(`${server.MEMBER_URL}/group-detail?groupID=${groupID}`);
+            if(result.data.status === 'success'){
+                let {data} = result.data;
+                dispatch(setGroupSuccess(data));
+            }else{
+                let {data} = result.data;
+                dispatch(setGroupFailed(data.message));
+            }
+        }catch(ex){
+            dispatch(setGroupFailed(ex.message));
+        }
+    };
+}

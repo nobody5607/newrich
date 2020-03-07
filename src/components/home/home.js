@@ -155,7 +155,7 @@ class Home extends Component {
                 </Grid>
                 <hr className="hrstyle" style={{marginTop:'30px'}}/>
 
-                <Bussinese/>
+                <Bussinese history={this.props.history}/>
 
 
                 <div style={{marginTop:'15px',fontWeight:'bold',color:'#9E9E9E'}}>

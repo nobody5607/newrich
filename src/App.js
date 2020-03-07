@@ -24,6 +24,7 @@ import ChangePassword from "./components/change-password/change-password";
 import {
     server
 } from "./constants";
+import BussineseDetail from "./components/home/bussinese-detail";
 const isLoggedIn = ()=>{
     return localStorage.getItem(server.TOKEN_KEY) != null
 }
@@ -61,6 +62,8 @@ class App extends React.Component{
                     <SecuredRoute path="/about" component={About}/>
                     <SecuredRoute path="/help" component={Help}/>
                     <SecuredRoute path="/change-password" component={ChangePassword}/>
+
+                <SecuredRoute path="/bussinese-detail" component={BussineseDetail}/>
 
 
                     <Route path="/register" component={Register}/>
