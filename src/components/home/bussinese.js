@@ -47,7 +47,7 @@ class Bussinese extends Component {
                         <Grid container>
 
                             <Grid item md={12} xs={12} style={{marginLeft: '10px'}}>
-                                <div>สร้างธุรกิจ</div>
+                                <div><h3>สร้างธุรกิจ</h3></div>
                                 <Button variant="outlined" color="primary" onClick={this.createBussines}>
                                     <AddIcon/> สร้างธุรกิจ
                                 </Button>

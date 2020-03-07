@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="709e6f0c-13b7-4452-bda8-692d55c2c32f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/home/bussinese-detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/member.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/member.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/bussinese.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/bussinese.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/member.reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/member.reducers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +101,7 @@
       <workItem from="1582640878728" duration="4358000" />
       <workItem from="1583157516022" duration="4542000" />
       <workItem from="1583331211886" duration="1484000" />
-      <workItem from="1583514100702" duration="16226000" />
+      <workItem from="1583514100702" duration="17377000" />
     </task>
     <servers />
   </component>

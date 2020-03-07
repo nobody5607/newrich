@@ -87,7 +87,7 @@ a{
     font-weight: bold;
 }
 .MuiInputBase-input{
-    border: 1px solid #89b5ab !important;
+    /*border: 1px solid #89b5ab !important;*/
     border-radius: 50px;
 }
 .MuiOutlinedInput-root{
