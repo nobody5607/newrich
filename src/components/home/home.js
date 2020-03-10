@@ -156,34 +156,6 @@ class Home extends Component {
                 <hr className="hrstyle" style={{marginTop:'30px'}}/>
 
                 <Bussinese history={this.props.history}/>
-
-
-                <div style={{marginTop:'15px',fontWeight:'bold',color:'#9E9E9E'}}>
-                        <Grid container>
-                        <Grid item xs={12}>
-                            <Grid container>
-
-                                <Grid item md={9} xs={10} className={classes.font12} >
-                                     <div className="txt-new-founder"> New Founder </div>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </div>
-
-                {isFetching && <h2 style={{textAlign:'center',color:'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
-                    {!isFetching && result !== undefined &&
-                    result !== null &&
-                    result.data.length > 0 &&
-                    result.status !== 'error' &&
-                    result.data.map((item, index) => {
-                        return <MemberGrid
-                                    key={index}
-                                    member={item}
-                                    onClick={() => this.memberDetail(item.user_id)}
-                                    type={"B2C"}/> })}
-
-
                 <br/><br/><br/>
 
                 <Menus/>
