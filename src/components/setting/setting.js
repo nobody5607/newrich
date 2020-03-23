@@ -66,6 +66,8 @@ class Setting extends Component {
         url:'',
         value: '',
         copied: false,
+        payment:0,
+        showBtnCopyLink:false
     }
     logout=()=>{
 
@@ -91,12 +93,27 @@ class Setting extends Component {
         let name = await localStorage.getItem('name');
         let link = await localStorage.getItem('link');
         let image = await localStorage.getItem('image');
+        let profile = await localStorage.getItem('profile');
+        profile = JSON.parse(profile);
+        //console.log(profile);
         //this.setState({name:name, link:link,image:image});
+
+        if(profile.payment === 1){
+            this.setState({
+                link:link,
+                showBtnCopyLink:true
+            });
+        }else{
+            this.setState({
+                link:'********',
+                showBtnCopyLink:false
+            });
+        }
         this.setState({
             name:name,
-            link:link,
             image:image,
-            url:`${mainUrl}/register?link=${link}`
+            url:`${mainUrl}/register?link=${link}`,
+            payment:profile.payment
 
         });
     }
@@ -146,12 +163,15 @@ class Setting extends Component {
                         Link: {this.state.link}
                     </div>
                     <div style={{marginBottom:'20px',textAlign:'center'}} className='mb-10'>
-                        <Button variant="contained" color="primary" id="btn-primary" onClick={this.sharedComponentToFacebook}>
-                            <CopyToClipboard text={this.state.url}
-                                             onCopy={() => this.setState({copied: true})}>
-                                <span>Copy Link</span>
-                            </CopyToClipboard>
-                        </Button>
+                        {this.state.showBtnCopyLink === true &&(
+                            <Button variant="contained" color="primary" id="btn-primary" onClick={this.sharedComponentToFacebook}>
+                                <CopyToClipboard text={this.state.url}
+                                                onCopy={() => this.setState({copied: true})}>
+                                    <span>Copy Link</span>
+                                </CopyToClipboard>
+                            </Button>
+                        )}
+                        
 
 
                         {' '}

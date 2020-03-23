@@ -25,6 +25,7 @@ import {
     server
 } from "./constants";
 import BussineseDetail from "./components/home/bussinese-detail";
+import Payment from './components/payment';
 const isLoggedIn = ()=>{
     return localStorage.getItem(server.TOKEN_KEY) != null
 }
@@ -61,6 +62,7 @@ class App extends React.Component{
                     <SecuredRoute path="/setting" component={Setting}/>
                     <SecuredRoute path="/about" component={About}/>
                     <SecuredRoute path="/help" component={Help}/>
+                    <SecuredRoute path="/payment" component={Payment}/>
                     <SecuredRoute path="/change-password" component={ChangePassword}/>
 
                 <SecuredRoute path="/bussinese-detail" component={BussineseDetail}/>

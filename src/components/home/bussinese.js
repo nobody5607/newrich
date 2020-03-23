@@ -23,18 +23,40 @@ const useStyles = theme => ({
 });
 
 class Bussinese extends Component {
+    state={
+        link:'',
+        showBtnCreateBussiness:false
+    }
     async componentDidMount() {
         this.props.fetchGroup();
+        let profile = await localStorage.getItem('profile');
+        profile = JSON.parse(profile);
+
+        if(profile.payment === 1){
+            this.setState({
+                showBtnCreateBussiness:true
+            });
+        }else{
+            this.setState({
+                showBtnCreateBussiness:false
+            });
+        }
     }
     bussineseDetail(id){
         // alert('ID='+id)
        this.props.history.push('/bussinese-detail?id='+id);
     }
     createBussines = (route) => {
-        let token = localStorage.getItem('token');
-        let site = process.env.REACT_APP_SITE;
-        let url = process.env.REACT_APP_BACKEND + `/create-group/index?token=${token}&site=${site}`;
-        window.location.href = url;
+
+        if(this.state.showBtnCreateBussiness === true){
+            let token = localStorage.getItem('token');
+            let site = process.env.REACT_APP_SITE;
+            let url = process.env.REACT_APP_BACKEND + `/create-group/index?token=${token}&site=${site}`;
+            window.location.href = url;
+        }else{
+            this.props.history.push('/payment');
+        }
+        
     };
 
     render() {
@@ -48,7 +70,9 @@ class Bussinese extends Component {
 
                             <Grid item md={12} xs={12} style={{marginLeft: '10px'}}>
                                 <div><h3>สร้างธุรกิจ</h3></div>
-                                <Button variant="outlined" color="primary" onClick={this.createBussines}>
+                               
+                               
+                                <Button variant="contained" color="primary" onClick={this.createBussines}>
                                     <AddIcon/> สร้างธุรกิจ
                                 </Button>
 
