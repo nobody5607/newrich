@@ -96,7 +96,7 @@ class Setting extends Component {
         let profile = await localStorage.getItem('profile');
         profile = JSON.parse(profile);
         //console.log(profile);
-        //this.setState({name:name, link:link,image:image});
+        this.setState({name:name, link:link,image:image});
 
         // if(profile.payment === 1){
         //     this.setState({
