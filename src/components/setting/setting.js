@@ -67,7 +67,7 @@ class Setting extends Component {
         value: '',
         copied: false,
         payment:0,
-        showBtnCopyLink:false
+        showBtnCopyLink:true
     }
     logout=()=>{
 
@@ -98,17 +98,17 @@ class Setting extends Component {
         //console.log(profile);
         //this.setState({name:name, link:link,image:image});
 
-        if(profile.payment === 1){
-            this.setState({
-                link:link,
-                showBtnCopyLink:true
-            });
-        }else{
-            this.setState({
-                link:'********',
-                showBtnCopyLink:false
-            });
-        }
+        // if(profile.payment === 1){
+        //     this.setState({
+        //         link:link,
+        //         showBtnCopyLink:true
+        //     });
+        // }else{
+        //     this.setState({
+        //         link:'********',
+        //         showBtnCopyLink:false
+        //     });
+        // }
         this.setState({
             name:name,
             image:image,
