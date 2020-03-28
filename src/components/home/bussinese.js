@@ -32,7 +32,7 @@ class Bussinese extends Component {
         let profile = await localStorage.getItem('profile');
         profile = JSON.parse(profile);
 
-        if(profile.payment === 1){
+        if(profile.payment === 0){
             this.setState({
                 showBtnCreateBussiness:true
             });
@@ -48,14 +48,14 @@ class Bussinese extends Component {
     }
     createBussines = (route) => {
 
-        if(this.state.showBtnCreateBussiness === true){
+        /*if(this.state.showBtnCreateBussiness === true){
             let token = localStorage.getItem('token');
             let site = process.env.REACT_APP_SITE;
             let url = process.env.REACT_APP_BACKEND + `/create-group/index?token=${token}&site=${site}`;
             window.location.href = url;
-        }else{
-            this.props.history.push('/payment');
-        }
+        }else{*/
+            this.props.history.push('/token');
+        //}
         
     };
 
