@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="709e6f0c-13b7-4452-bda8-692d55c2c32f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/images/money.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/payment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/price.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/order.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/order.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/bussinese.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/bussinese.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/member-grid/member-grid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/member-grid/member-grid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menus/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menus/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/my-member/my-member.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/my-member/my-member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/setting/setting.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/setting/setting.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/setting/setting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/setting/setting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -29,9 +51,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -46,17 +69,17 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/images" />
+      <recent name="$PROJECT_DIR$/src/components/home" />
+      <recent name="D:\job\bloodcloud\newrich\src\components" />
+      <recent name="D:\job\bloodcloud\newrich\public" />
+      <recent name="D:\job\bloodcloud\newrich\public\assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\job\bloodcloud\newrich\public" />
       <recent name="D:\job\bloodcloud\newrich\public\assets\images" />
       <recent name="D:\job\bloodcloud\newrich\src\components\all-member" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/home" />
-      <recent name="$PROJECT_DIR$/public/assets/images" />
-      <recent name="D:\job\bloodcloud\newrich\src\components" />
-      <recent name="D:\job\bloodcloud\newrich\public" />
-      <recent name="D:\job\bloodcloud\newrich\public\assets" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -102,6 +125,8 @@
       <workItem from="1583331211886" duration="1484000" />
       <workItem from="1583514100702" duration="18859000" />
       <workItem from="1583808596395" duration="1260000" />
+      <workItem from="1586783552807" duration="33000" />
+      <workItem from="1586783656244" duration="2005000" />
     </task>
     <servers />
   </component>
@@ -113,10 +138,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="374" y="200" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1582641111123" />
-    <state x="288" y="23" width="703" height="777" key="find.popup" timestamp="1583518207794">
+    <state x="288" y="23" width="703" height="777" key="find.popup" timestamp="1586785819331">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="288" y="23" width="703" height="777" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1583518207794" />
+    <state x="288" y="23" width="703" height="777" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1586785819331" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

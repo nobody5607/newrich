@@ -51,12 +51,12 @@ class Income extends Component {
     render() {
         const {classes} = this.props;
         const {result,isFetching} = this.props.incomeReducer;
-
+        console.log(result);
         return (
             <div className={classes.content}>
                 <Header header="รายละเอียดรายรับ" goback={true} route={this.goBack}/>
                 {!isFetching && result && <Timeline events={result}/>}
-
+                {result == '' && <h2 className='text-center'>ยังไม่มีรายรับ</h2>}
             </div>
         );
     }

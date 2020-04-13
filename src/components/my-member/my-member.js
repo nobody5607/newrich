@@ -63,14 +63,14 @@ class MyMember extends Component {
                 <div className={classes.root}>
                     <div>
                         <div>
-                            <div style={{marginTop: '10px', color: '#4abdac',textAlign:'center'}}><h2>Total Founders</h2></div>
+                            <div style={{marginTop: '10px', color: 'rgb(245, 130, 32)',textAlign:'center',fontWeight:'bold'}}><h2>ผู้ร่วมธุรกิจ</h2></div>
 
-                            <div style={{fontSize: '16pt',textAlign:'left'}}>
-                                {
+                            <div style={{fontSize: '16pt',textAlign:'right',paddingRight:'10px'}}>
+                                จำนวน {
                                     !isFetching && result !== null &&
                                     result.status !== 'error' &&
                                     result.data.length > 0 && result.data.length
-                                } Founders
+                                } ท่าน
                             </div>
                         </div>
                     </div>
@@ -89,18 +89,20 @@ class MyMember extends Component {
                     })}
                     <div className={classes.text_center}>
 
-                        {!isFetching && result != null &&
+                        <div style={{padding:'10px'}}>
+                            {!isFetching && result != null &&
 
-                        <Button style={{marginBottom: '100px'}}
-                                id="btn-default"
-                                onClick={this.allMember}
-                                size={"large"}
-                                fullWidth
-                                variant="outlined"
-                                color="default"
-                                disableElevation>
-                            See all
-                        </Button>}
+                            <Button style={{marginBottom: '100px'}}
+                                    id="btn-default"
+                                    onClick={this.allMember}
+                                    size={"large"}
+                                    fullWidth
+                                    variant="outlined"
+                                    color="default"
+                                    disableElevation>
+                                ดูทั้งหมด
+                            </Button>}
+                        </div>
                     </div>
                 </div>
                 <Menus/>

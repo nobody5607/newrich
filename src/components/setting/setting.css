@@ -8,8 +8,9 @@
 }
 .profile_name{
     text-align: center;
-    font-size:16pt;
-    color:#9E9E9E;
+    font-size: 16pt;
+    color: #f58220;
+    font-weight: bold;
 }
 .profile_email{
     font-size:12px;

@@ -4,7 +4,7 @@ import Menus from "../menus/menus";
 import {withStyles} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
-import Fab from '@material-ui/core/Fab';
+import News from '../News';
 
 //redux
 import { connect } from "react-redux";
@@ -16,7 +16,6 @@ import {
 } from "../../constants";
 
 import './home.css';
-import MemberGrid from "../member-grid";
 import Bussinese from "./bussinese";
 
 const styles = theme => ({
@@ -29,7 +28,10 @@ const styles = theme => ({
         marginTop: '10px'
     },
     marginTop:{
-      marginTop:'80px'
+      
+      background:'#f58220',
+      paddingTop: '10px',
+       paddingBottom: '10px',
     },
     inline: {
         display: 'inline',
@@ -78,6 +80,9 @@ const styles = theme => ({
         fontSize:'14pt',
         fontWeight:'bold',
         color:"#b3b3b3"
+    },
+    gridHeader:{
+        padding:'10px'
     }
 });
 class Home extends Component {
@@ -106,10 +111,10 @@ class Home extends Component {
 
         return (
             <div >
-                <Header header='Home'/>
+                <Header header='Newriched'/>
                 <div className={classes.marginTop}>
                     <Grid container>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridHeader}>
                             <Grid container>
                                 <Grid item md={3} xs={3} style={{marginLeft:'-3px'}}>
                                     <Avatar className={classes.imageCenter} id="fixed-image"
@@ -128,34 +133,36 @@ class Home extends Component {
                             </Grid>
                         </Grid>
                     </Grid>
+                    <ul className="nav nav-pills nav-justified home-menu" tabIndex='1'>
+                            <li className="nav-item">
+                                <a onClick={this.inCome} className="nav-link " href="#" tabIndex='1'>
+                                    <div class='icon-head'>
+                                        <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/price.png`} style={{width:'40px'}}/>{' '}
+                                    </div>
+                                    <div class='text-head'>รายรับรวม</div>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link " target="_blank" href={itoplusUrl} tabindex="-1" aria-disabled="true">
+                                    <div class='icon-head'>
+                                        <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/order.png`} style={{width:'40px'}}/>{' '}
+                                    </div>
+                                    <div class='text-head'>สั่งสินค้า</div>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link " target="_blank" href={itoplusUrl} tabindex="-1" aria-disabled="true">
+                                    <div class='icon-head'>
+                                        <img alt="login_image" src={`${process.env.PUBLIC_URL}/assets/images/money.png`} style={{width:'50px',marginTop:'3px'}}/>{' '}
+                                    </div>
+                                    <div class='text-head'>ขอคืนเงิน</div>
+                                </a>
+                            </li>
+                    </ul>
                 </div>
-                <hr className="hrstyle" style={{marginTop:'25px'}}/>
-                <Grid container className='color-gray' >
-                    <div style={{marginTop:'15px',fontWeight:'bold',marginLeft:'20px'}}>
-                        <div> รายรับรวม </div>
-                    </div>
-
-                    <Grid item xs={12} className={classes.text_center}>
-                        <Fab className={classes.fabMain} aria-label="add" size={"large"} style={{color:'#ff4f8b'}}>
-                            <div>
-                                <div>{profileResult && profileResult.order && profileResult.order.currentMonth }</div>
-
-                                <div><h1 style={{color:'#ff4f8b'}}>{(profileResult && profileResult.order && profileResult.order.totalPrice) ? profileResult.order.totalPrice : '0'}฿</h1></div>
-                                <div onClick={this.inCome}>ดูรายละเอียด</div>
-                            </div>
-                        </Fab>
-                    </Grid>
-                    <Grid item xs={12} className={classes.text_right} style={{marginRight:'20px'}}>
-                        <a rel="noopener noreferrer" target="_blank" href={itoplusUrl}>
-                            <Fab className={classes.fab} color="secondary" aria-label="add" size={"large"}>
-                                สั่งสินค้า<br/>เพิ่มเติม
-                            </Fab>
-                        </a>
-                    </Grid>
-                </Grid>
-                <hr className="hrstyle" style={{marginTop:'30px'}}/>
-
+                <News /> 
                 <Bussinese history={this.props.history}/>
+                
                 <br/><br/><br/>
 
                 <Menus/>

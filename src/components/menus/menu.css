@@ -22,7 +22,7 @@
     background-color: #f7b733 !important;
 }
 .tab_primary{
-    background-color: #4abdac !important;
+    background-color: #9b9c9c !important;
 }
 .tab_color_while{
  color:#fff;
@@ -30,7 +30,7 @@
 
 .MuiTab-textColorSecondary.Mui-selected {
     color: #ffffff !important;
-    background: #f7b733;
+    background: #f58220;
     /* font-weight: bold; */
 }
 .MuiTab-textColorSecondary {
@@ -51,4 +51,20 @@
 }
 .MuiPaper-rounded {
     border-radius: 20px !important;
+}
+.home-menu li a {
+    color: #fff !important;
+}
+.icon-head{
+    font-size:10vw;
+}
+.text-head{
+    font-size:4vw;
+}
+.MuiButton-containedPrimary {
+    color: #fff;
+    background-color: #4CAF50 !important;
+}
+.h3, h3 {
+    font-size: 5vw !important;
 }

@@ -30,7 +30,7 @@ class MemberGrid extends Component {
                     <ListItemAvatar>
                         <Avatar alt="Avatar image" src={member !== undefined ? member.avatar_path:""}/>
                     </ListItemAvatar>
-                    <ListItemText style={{color:'rgb(74, 189, 172)'}}
+                    <ListItemText style={{color:'rgb(245, 130, 32)'}}
                         primary={member !== undefined ? member.name:''}
                         secondary={
                             <React.Fragment>

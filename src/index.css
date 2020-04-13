@@ -2,10 +2,7 @@
 *{
   font-family: 'Prompt', sans-serif; 
 }
-body {
-  background: #e9ebee;
-  overflow-x: hidden;
-}
+
 .content{
   margin-top: 90px;
 }

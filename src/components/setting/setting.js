@@ -151,7 +151,7 @@ class Setting extends Component {
                         <div className="profile">
                             <div className="profile_name">{this.state.name}
                                 <IconButton   aria-label="delete" color="primary" onClick={this.editProfile}>
-                                    <CreateIcon style={{color:'#4abdac'}}/>
+                                    <CreateIcon style={{color:'gray'}}/>
                                 </IconButton>
                             </div>
                             {/*<div className="profile_name" style={{color:'#4abdac'}}>link:{this.state.link}</div>*/}
@@ -168,7 +168,7 @@ class Setting extends Component {
                             <Button variant="contained" color="primary" id="btn-primary" onClick={this.sharedComponentToFacebook}>
                                 <CopyToClipboard text={this.state.url}
                                                 onCopy={() => this.setState({copied: true})}>
-                                    <span>Copy Link</span>
+                                    <span>คัดลอกลิงก์</span>
                                 </CopyToClipboard>
                             </Button>
                         )}
@@ -186,39 +186,39 @@ class Setting extends Component {
                         <CardContent onClick={this.changePassword} style={{paddingBottom:'10px'}}>
                             <Grid container spacing={3}>
                                 <Grid item xs={10}>
-                                    Change Password
+                                    เปลี่ยนรหัสผ่าน
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <ArrowDropDownIcon style={{color:"#4abdac"}}/>
+                                    <ArrowDropDownIcon style={{color:"gray"}}/>
                                 </Grid>
                             </Grid>
                         </CardContent>
                     </Card>
                 </div>
-                <div className='mb-5'>
+                <div className=''>
                     <Card id="border-radius-3px">
                         <CardContent onClick={this.about} style={{paddingBottom:'10px'}}>
                             <Grid container spacing={3}>
                                 <Grid item xs={10}>
-                                    About App
+                                    เกี่ยวกับแอพ
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <ArrowDropDownIcon style={{color:"#4abdac"}}/>
+                                    <ArrowDropDownIcon style={{color:"gray"}}/>
                                 </Grid>
                             </Grid>
 
                         </CardContent>
                     </Card>
                 </div>
-                <div className='mb-5'>
+                <div className=''>
                     <Card id="border-radius-3px">
                         <CardContent onClick={this.help} style={{paddingBottom:'10px'}}>
                             <Grid container spacing={3}>
                                 <Grid item xs={10}>
-                                    Help
+                                    ช่วยเหลือ
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <ArrowDropDownIcon style={{color:"#4abdac"}}/>
+                                    <ArrowDropDownIcon style={{color:"gray"}}/>
                                 </Grid>
                             </Grid>
 
@@ -228,8 +228,8 @@ class Setting extends Component {
                 {/*<div className='mb-10'>*/}
                 {/*    <Button variant="contained" fullWidth>Add payment method</Button>*/}
                 {/*</div>*/}
-                <div className='mb-10' style={{marginBottom:'60px'}}>
-                    <Button id="btn-danger" onClick={this.logout} variant="contained" fullWidth>Logout</Button>
+                <div className='mb-10' style={{marginBottom:'60px',padding:'10px'}}>
+                    <Button id="btn-danger" onClick={this.logout} variant="contained" fullWidth>ออกจากระบบ</Button>
                 </div>
                 <br/><br/>
 

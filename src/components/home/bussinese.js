@@ -8,17 +8,20 @@ import {connect} from "react-redux";
 import * as actions from "../../actions/member.action";
 import {withStyles} from '@material-ui/core/styles';
 
+
+
 const useStyles = theme => ({
     gridRoot:{
         padding:'10px',
     },
     grid:{
-        border: '1px solid #9ddbd2',
-        borderRadius: '3px',
-        padding: '10px',
+        border: '1px solid #e4e4e44d',
         cursor: 'pointer',
-        marginTop:'0px',
-        marginLeft:'-10px'
+        padding: '10px',
+        marginTop: '0px',
+        marginLeft: '-10px',
+        borderRadius: '3px',
+        boxShadow:'2px 5px 5px #dfdce3'
     }
 });
 
@@ -69,17 +72,21 @@ class Bussinese extends Component {
                         <Grid container>
 
                             <Grid item md={12} xs={12} style={{marginLeft: '10px'}}>
-                                <div><h3>สร้างธุรกิจ</h3></div>
-                               
-                               
-                                <Button variant="contained" color="primary" onClick={this.createBussines}>
-                                    <AddIcon/> สร้างธุรกิจ
-                                </Button>
-
+                                
+                                <div className='row'>
+                                    <div className='col-6 text-left'><h3>สร้างธุรกิจ</h3></div>
+                                    <div className='col-6 text-right' style={{paddingRight:'25px'}}>
+                                        <Button variant="contained" color="primary" onClick={this.createBussines}>
+                                            <AddIcon/> สร้างธุรกิจ
+                                        </Button>
+                                    </div>
+                                </div>
+                                
                                 {isFetching2 &&
                                 <h2 style={{textAlign: 'center', color: 'rgb(158, 158, 158)'}}>กำลังโหลดข้อมูล...</h2>}
                                 {isError2 && errMessage2 &&
                                 <h2 style={{textAlign: 'center', color: 'rgb(158, 158, 158)'}}>{errMessage2}</h2>}
+                                
                                 <Grid container >
                                     {!isFetching2 && result2 && result2.map((item, index) => (
                                         <Grid onClick={() => this.bussineseDetail(item.id)}  container item xs={6} key={item.id} className={classes.gridRoot}>
