@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import {connect} from "react-redux";
 import * as actions from "../../actions/member.action";
 import {withStyles} from '@material-ui/core/styles';
+import Avatar from "@material-ui/core/Avatar";
 
 
 
@@ -15,13 +16,14 @@ const useStyles = theme => ({
         padding:'10px',
     },
     grid:{
-        border: '1px solid #e4e4e44d',
+        // border: '1px solid #e4e4e44d',
         cursor: 'pointer',
         padding: '10px',
         marginTop: '0px',
         marginLeft: '-10px',
         borderRadius: '3px',
-        boxShadow:'2px 5px 5px #dfdce3'
+        textAlign:'center'
+        // boxShadow:'2px 5px 5px #dfdce3'
     }
 });
 
@@ -67,7 +69,7 @@ class Bussinese extends Component {
         const {isFetching2, result2, isError2, errMessage2} = this.props.memberReducer;
         return (
             <div style={{marginTop: '15px', fontWeight: 'bold', color: '#9E9E9E'}}>
-                <Grid>
+                <Grid style={{background:'#fff',paddingTop:'10px',marginTop:'-15px',paddingBottom:'50px'}}>
                     <Grid item xs={12}>
                         <Grid container>
 
@@ -89,9 +91,16 @@ class Bussinese extends Component {
                                 
                                 <Grid container >
                                     {!isFetching2 && result2 && result2.map((item, index) => (
-                                        <Grid onClick={() => this.bussineseDetail(item.id)}  container item xs={6} key={item.id} className={classes.gridRoot}>
-                                            <Grid item xs={12} className={classes.grid} >
-                                                <div>{item.name}</div>
+                                        <Grid onClick={() => this.bussineseDetail(item.id)}
+                                              container item xs={3} key={item.id} className={classes.gridRoot}>
+
+                                            <Grid item md={12} xs={12} className={classes.grid} >
+                                                <div>
+                                                    <Avatar className={classes.imageCenter} id="fixed-image"
+                                                            alt="Travis Howard"
+                                                            src=''/>
+                                                </div>
+                                                <div style={{fontSize:'10px'}}>{item.name}</div>
                                             </Grid>
                                         </Grid>
                                     ))}
