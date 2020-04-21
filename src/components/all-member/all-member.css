@@ -1,23 +1,23 @@
 .MuiTab-textColorSecondary.Mui-selected {
     color: #ffffff !important;
-    background: #FF5722;
+    background: #e89650;
     /* font-weight: bold; */
 }
 .MuiTab-textColorSecondary {
     color: #ffffff !important;
 }
 .PrivateTabIndicator-colorSecondary-263 {
-    background-color: #FF5722 !important;;
+    background-color: #e89650 !important;;
 }
 .PrivateTabIndicator-colorSecondary-263 {
-    background-color: #FF5722 !important;
+    background-color: #e89650 !important;
 }
 .MuiFab-secondary {
     color: #fff;
-    background-color: #FF5722 !important;
+    background-color: #e89650 !important;
 }
 .PrivateTabIndicator-colorSecondary-156 {
-    background-color: #ff5722;
+    background-color: #e89650;
 }
 .MuiBox-root {
     padding: 0 !important;
